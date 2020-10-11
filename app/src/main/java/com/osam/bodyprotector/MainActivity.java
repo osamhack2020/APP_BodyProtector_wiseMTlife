@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,13 +16,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private EditText et_id;
     private EditText et_pw;
     private Button bt_ok;
     private Button bt_mkid;
+    private CheckBox chb_memory;
+
     FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         et_pw = (EditText)findViewById(R.id.editText_pw);
         bt_ok = (Button)findViewById(R.id.bt_ok);
         bt_mkid = (Button)findViewById(R.id.bt_mkid);
+        chb_memory = (CheckBox)findViewById(R.id.chb_memory);
+
+        SharedPreferences pref;
+        SharedPreferences.Editor editor;
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         firebaseAuth = firebaseAuth.getInstance();
         bt_ok.setOnClickListener(new View.OnClickListener(){
@@ -38,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = et_id.getText().toString().trim();
                 String pw = et_pw.getText().toString().trim();
+
 
                 if(email.isEmpty() || pw.isEmpty()){
                     Toast.makeText(MainActivity.this,"Login failed",Toast.LENGTH_SHORT).show();
