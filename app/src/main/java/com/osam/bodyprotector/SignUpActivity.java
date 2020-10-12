@@ -28,20 +28,6 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    public class User{
-        public String username;
-        public String email;
-        public String pw;
-
-        public User(){}
-
-        public User(String username, String email, String pw){
-            this.username = username;
-            this.email = email;
-            this.pw = pw;
-        }
-    }
-
     private void createNewUser(String userId, String name, String email, String pw){
         User user = new User(name, email, pw);
 

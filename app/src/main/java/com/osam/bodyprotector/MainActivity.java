@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,7 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private EditText et_id;
@@ -39,8 +44,12 @@ public class MainActivity extends AppCompatActivity {
         bt_mkid = (Button)findViewById(R.id.bt_mkid);
         chb_memory = (CheckBox)findViewById(R.id.chb_memory);
 
-        SharedPreferences pref;
-        SharedPreferences.Editor editor;
+        SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
+        String name = pref.getString("name", "null");
+        if(name != null){
+            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+            startActivity(intent);
+        }
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -59,6 +68,31 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            DatabaseReference myRef = database.getReference().child("users").child(firebaseAuth.getUid());
+                            myRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    // This method is called once with the initial value and again
+                                    // whenever data at this location is updated.
+                                    User value = dataSnapshot.getValue(User.class);
+                                    if(chb_memory.isChecked()){
+                                        SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = pref.edit();
+                                        editor.putString("email", value.email);
+                                        editor.putString("pw", value.pw);
+                                        editor.putString("name", value.username);
+                                        editor.commit();
+                                    }
+                                    Toast.makeText(MainActivity.this, value.email +", " + value.username, Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                    Log.w("HI", "Failed to read value.", error.toException());
+                                }
+                            });
+
                             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
                             startActivity(intent);
                         }
