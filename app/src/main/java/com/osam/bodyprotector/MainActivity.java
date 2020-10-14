@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
         chb_memory = (CheckBox)findViewById(R.id.chb_memory);
 
         SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
-        String name = pref.getString("name", "null");
-        if(name != null){
+        if(pref.getBoolean("AutoLogin", false)){
             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+            finish();
             startActivity(intent);
         }
 
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                                         editor.putString("email", value.email);
                                         editor.putString("pw", value.pw);
                                         editor.putString("name", value.username);
+                                        editor.putString("uuid", value.uuid);
+                                        editor.putBoolean("AutoLogin", true);
                                         editor.commit();
                                     }
                                     Toast.makeText(MainActivity.this, value.email +", " + value.username, Toast.LENGTH_SHORT).show();
