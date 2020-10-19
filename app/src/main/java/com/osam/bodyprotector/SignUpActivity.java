@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,6 +61,14 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 createNewUser(firebaseAuth.getUid(),sign_name,sign_id,sign_pw);
+                                SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("email", sign_id);
+                                editor.putString("pw", sign_pw);
+                                editor.putString("name", sign_name);
+                                editor.putString("uuid", firebaseAuth.getUid());
+                                editor.putBoolean("AutoLogin", false);
+                                editor.commit();
                                 Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                                 startActivity(intent);
                             }else{
