@@ -44,7 +44,7 @@ public class WriteActivity extends AppCompatActivity {
     private ImageView imgView;
 
     final User user = new User();
-    Uri imguri;
+    Uri imguri = null;
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -90,29 +90,35 @@ public class WriteActivity extends AppCompatActivity {
                 String post_name = et_postname.getText().toString().trim();
 
                 if(!post_main.isEmpty() && !post_name.isEmpty()){
-                    SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMddhhmmss"); //20191024111224
-                    String fileName= sdf.format(new Date())+".png";
+                    if(imguri != null){
+                        SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMddhhmmss"); //20191024111224
+                        String fileName= sdf.format(new Date())+".png";
 
-                    FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
-                    final StorageReference imgRef= firebaseStorage.getReference("profileImages/"+fileName);
+                        FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
+                        final StorageReference imgRef= firebaseStorage.getReference("profileImages/"+fileName);
 
-                    UploadTask uploadTask=imgRef.putFile(imguri);
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    String post_main = et_postmain.getText().toString().trim();
-                                    String post_name = et_postname.getText().toString().trim();
+                        UploadTask uploadTask=imgRef.putFile(imguri);
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        String post_main = et_postmain.getText().toString().trim();
+                                        String post_name = et_postname.getText().toString().trim();
 
-                                    createNewPost(user,post_name, post_main, uri.toString());
-                                    finish();
-                                    Toast.makeText(WriteActivity.this, "성공적으로 글을 게시했습니다.", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    });
+                                        createNewPost(user,post_name, post_main, uri.toString());
+                                        finish();
+                                        Toast.makeText(WriteActivity.this, "성공적으로 글을 게시했습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                    } else{
+                        createNewPost(user,post_name, post_main, null);
+                        finish();
+                        Toast.makeText(WriteActivity.this, "성공적으로 글을 게시했습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Toast.makeText(WriteActivity.this, "제목과 본문을 적어야 합니다.", Toast.LENGTH_SHORT).show();
                 }

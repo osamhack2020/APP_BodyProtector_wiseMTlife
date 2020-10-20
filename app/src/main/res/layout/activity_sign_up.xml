@@ -16,7 +16,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UserName :"
+            android:text="이름 :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -25,13 +25,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Input Username"
+            android:hint="홍길동"
             android:inputType="textPersonName" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -40,8 +40,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
+            android:text="군단 :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/regeon"
+            android:spinnerMode="dialog" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -53,7 +63,7 @@
             android:id="@+id/text_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID :"
+            android:text="아이디 :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -62,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="input email"
+            android:hint="abcde@google.com"
             android:inputType="textPersonName" />
     </LinearLayout>
 
@@ -75,7 +85,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PW :"
+            android:text="비밀번호 :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -84,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="password more than 6 digit"
+            android:hint="6글자 이상"
             android:inputType="textPassword" />
     </LinearLayout>
 
@@ -97,7 +107,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PWR :"
+            android:text="비밀번호 확인:"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -106,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Re input password "
+            android:hint="비밀번호 재 입력"
             android:inputType="textPassword" />
     </LinearLayout>
 
@@ -114,6 +124,6 @@
         android:id="@+id/bt_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sign up'" />
+        android:text="확인" />
 
 </LinearLayout>

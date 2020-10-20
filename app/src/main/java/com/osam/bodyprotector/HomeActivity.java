@@ -11,8 +11,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,9 +36,6 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     private ListView PostList;
-
-    private ListView mListView = null;
-    private ListViewAdapter mAdapter = null;
 
     private class ViewHolder {
         public ImageView png;
@@ -117,8 +117,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home);
+
 
         PostList = (ListView)findViewById(R.id.post_list);
         final ListViewAdapter adapter = new ListViewAdapter(this);
@@ -131,6 +131,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User value = dataSnapshot.getValue(User.class);
+                adapter.LPostData.clear();
+                adapter.addItem(null,"new post","",null);
                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
                     Post post = fileSnapshot.getValue(Post.class);
                     adapter.addItem(post.image_path,post.postname,post.postmain,post.postuid);
@@ -162,4 +164,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.xml.menu,menu);
+        return true;
+    }
+
 }

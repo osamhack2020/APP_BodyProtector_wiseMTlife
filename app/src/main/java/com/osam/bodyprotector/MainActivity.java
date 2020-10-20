@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -45,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         chb_memory = (CheckBox)findViewById(R.id.chb_memory);
 
         SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
-        if(pref.getBoolean("AutoLogin", false)){
+        /*if(pref.getBoolean("AutoLogin", false)){
             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
             finish();
             startActivity(intent);
-        }
+        }*/
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
