@@ -49,8 +49,8 @@ public class WriteActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    private void createNewPost(User user, String postname, String postmain, String image_path){
-        Post post = new Post(user, postname, postmain, image_path, user.uuid+System.currentTimeMillis());
+    private void createNewPost(User user, String postname, String postmain, String image_path, String image_name){
+        Post post = new Post(user, postname, postmain, image_path, user.uuid+System.currentTimeMillis(), image_name);
 
         databaseReference.child("post").child(user.uuid+System.currentTimeMillis()).setValue(post);
     }
@@ -92,7 +92,7 @@ public class WriteActivity extends AppCompatActivity {
                 if(!post_main.isEmpty() && !post_name.isEmpty()){
                     if(imguri != null){
                         SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMddhhmmss"); //20191024111224
-                        String fileName= sdf.format(new Date())+".png";
+                        final String fileName= sdf.format(new Date())+".png";
 
                         FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
                         final StorageReference imgRef= firebaseStorage.getReference("profileImages/"+fileName);
@@ -107,7 +107,7 @@ public class WriteActivity extends AppCompatActivity {
                                         String post_main = et_postmain.getText().toString().trim();
                                         String post_name = et_postname.getText().toString().trim();
 
-                                        createNewPost(user,post_name, post_main, uri.toString());
+                                        createNewPost(user,post_name, post_main, uri.toString(), fileName);
                                         finish();
                                         Toast.makeText(WriteActivity.this, "성공적으로 글을 게시했습니다.", Toast.LENGTH_SHORT).show();
                                     }
@@ -115,7 +115,7 @@ public class WriteActivity extends AppCompatActivity {
                             }
                         });
                     } else{
-                        createNewPost(user,post_name, post_main, null);
+                        createNewPost(user,post_name, post_main, null, null);
                         finish();
                         Toast.makeText(WriteActivity.this, "성공적으로 글을 게시했습니다.", Toast.LENGTH_SHORT).show();
                     }

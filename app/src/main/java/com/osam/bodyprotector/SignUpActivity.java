@@ -28,6 +28,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText et_pw;
     private EditText et_pwr;
     private EditText et_name;
+    private EditText et_height;
+    private EditText et_weight;
     private Button bt_signup;
     private Spinner spinner;
 
@@ -49,6 +51,8 @@ public class SignUpActivity extends AppCompatActivity {
         et_id = (EditText)findViewById(R.id.et_id);
         et_pw = (EditText)findViewById(R.id.et_pw);
         et_pwr = (EditText)findViewById(R.id.et_pwr);
+        et_height = (EditText)findViewById(R.id.et_height);
+        et_weight = (EditText)findViewById(R.id.et_weight);
         et_name = (EditText)findViewById(R.id.et_name);
         bt_signup = (Button)findViewById(R.id.bt_signup);
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -63,6 +67,8 @@ public class SignUpActivity extends AppCompatActivity {
                 final String sign_pw = et_pw.getText().toString().trim();
                 final String sign_pwr = et_pwr.getText().toString().trim();
                 final String sign_regeon = spinner.toString();
+                final int sign_height = Integer.parseInt(et_height.getText().toString());
+                final int sign_weight = Integer.parseInt(et_weight.getText().toString());
 
                 if(sign_pw.equals(sign_pwr)){
                     firebaseAuth.createUserWithEmailAndPassword(sign_id,sign_pw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
@@ -77,6 +83,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 editor.putString("name", sign_name);
                                 editor.putString("regeon", sign_regeon);
                                 editor.putString("uuid", firebaseAuth.getUid());
+                                editor.putInt("height", sign_height);
+                                editor.putInt("weight", sign_weight);
 
                                 editor.putBoolean("AutoLogin", false);
                                 editor.commit();

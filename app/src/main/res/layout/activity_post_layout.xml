@@ -27,6 +27,13 @@
                 android:text="제목 "
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+            <Button
+                android:id="@+id/bt_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="게시글 삭제" />
+
             <ImageView
                 android:id="@+id/image_thumbnail"
                 android:layout_width="match_parent"
@@ -42,7 +49,6 @@
                 android:gravity="start|top"
                 android:padding="12dp"
                 android:singleLine="false" />
-
 
         </LinearLayout>
     </ScrollView>

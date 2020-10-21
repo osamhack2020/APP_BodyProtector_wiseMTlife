@@ -11,16 +11,18 @@ public class Post{
     public String postmain;
     public String postuid;
     public String image_path;
+    public String image_name;
     public int starCount = 0;
     public Map<String, Boolean> stars = new HashMap<>();
 
     public Post(){}
 
-    public Post(User user, String postname, String postmain, String image_path, String postuid){
+    public Post(User user, String postname, String postmain, String image_path, String postuid, String image_name){
         this.user = user;
         this.postname = postname;
         this.postmain = postmain;
         this.image_path = image_path;
         this.postuid = postuid;
+        this.image_name = image_name;
     }
 }

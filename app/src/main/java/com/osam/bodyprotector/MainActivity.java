@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         chb_memory = (CheckBox)findViewById(R.id.chb_memory);
 
         SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
-        /*if(pref.getBoolean("AutoLogin", false)){
+        if(pref.getBoolean("AutoLogin", false)){
             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
             finish();
             startActivity(intent);
-        }*/
+        }
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
