@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ExerciseName_Arms">
+        <item>덤벨 컬</item>
+        <item>해머 컬</item>
+        <item>로우-풀리 컬</item>
+        <item>하이-풀리 컬</item>
+        <item>스탠딩 바벨 컬</item>
+        <item>머신 컬</item>
+        <item>프리쳐 컬</item>
+        <item>리버스 리스트 컬</item>
+        <item>리스트 컬</item>
+        <item>리스트 바벨 컬</item>
+        <item>트라이셉스 푸시 다운</item>
+        <item>트라이셉스 리버스 푸시 다운</item>
+        <item>원-암 리버스 푸시 다운</item>
+        <item>라잉 트라이셉스 익스텐션</item>
+        <item>라잉 덤벨 트라이셉스 익스텐션</item>
+        <item>트라이셉스 킥 백</item>
+        <item>트라이셉스 딥</item>
+    </string-array>
+
+    <string-array name="ExerciseDescription_Arms">
+        <item>상완근, 상완이두근, 전면삼각근</item>
+        <item>상완근, 상완이두근, 상완요골근</item>
+        <item>상완이두근</item>
+        <item>상완근, 상완이두근 내측면</item>
+        <item>상완근, 상완이두근, 상완요골근, 원회내근</item>
+        <item>상완이두근</item>
+        <item>상완이두근</item>
+        <item>수근신근, 수지신근, 소지신근</item>
+        <item>장장근, 요측수근굴근, 척측수근굴근</item>
+        <item>상완근, 상완요골근, 장요측수근신근</item>
+        <item>상완삼두근, 주근</item>
+        <item>상완삼두근, 장요측수근신근, 지신근</item>
+        <item>상완삼두근의 외측두</item>
+        <item>상완삼두근 내측두, 상완삼두근 장두</item>
+        <item>상완삼두근</item>
+        <item>상완삼두근</item>
+        <item>상완삼두근, 흉근, 전면삼각근</item>
+    </string-array>
+
+    <integer-array name="Exercisedumbel_Arms">
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisebabel_Arms">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="Exerciseoutfit_Arms">
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisedifficulty_Arms">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+</resources>

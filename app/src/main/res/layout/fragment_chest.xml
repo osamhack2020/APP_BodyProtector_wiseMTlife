@@ -7,35 +7,26 @@
     android:orientation="vertical"
     tools:context=".ChestFragment">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/text_partname"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="이름"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/front" />
-
-            <TextView
-                android:id="@+id/text_partname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="이름"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <ListView
-                android:id="@+id/FragListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </ScrollView>
+    <ListView
+        android:id="@+id/FragListView"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:padding="10dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:smoothScrollbar="false"
+        android:soundEffectsEnabled="false" />
 
 </LinearLayout>
