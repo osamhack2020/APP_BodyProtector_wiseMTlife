@@ -32,49 +32,47 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <EditText
-                    android:id="@+id/et_postname"
+                    android:id="@+id/et_updatename"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|end"
+                    android:layout_weight="1"
                     android:background="@drawable/et_back"
                     android:ems="12"
                     android:gravity="center"
                     android:hint="Type the title"
                     android:inputType="textPersonName"
-                    android:padding="8dp"
-                    android:textCursorDrawable="@drawable/et_cursor"
-                    tools:layout_editor_absoluteX="61dp"
-                    tools:layout_editor_absoluteY="14dp" />
+                    android:padding="12dp"
+                    android:textCursorDrawable="@drawable/et_cursor" />
 
             </LinearLayout>
 
             <EditText
-                android:id="@+id/et_postmain"
+                android:id="@+id/et_updatemain"
                 android:layout_width="match_parent"
                 android:layout_height="460dp"
                 android:layout_margin="12dp"
+                android:layout_weight="1"
                 android:background="@drawable/et_back"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:padding="12dp"
-                android:singleLine="false" />
+                android:padding="12dp" />
 
             <Button
-                android:id="@+id/bt_post"
+                android:id="@+id/bt_updatepost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="post" />
 
             <ImageView
-                android:id="@+id/image_post"
+                android:id="@+id/image_repost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/screen_background_light" />
+                app:srcCompat="?attr/actionBarDivider" />
 
             <Button
-                android:id="@+id/bt_photo"
+                android:id="@+id/bt_updatephoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
