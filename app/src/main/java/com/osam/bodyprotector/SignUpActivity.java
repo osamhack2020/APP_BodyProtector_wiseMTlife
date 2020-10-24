@@ -2,6 +2,7 @@ package com.osam.bodyprotector;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,8 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    private void createNewUser(String userId, String name, String email, String pw){
-        User user = new User(name,userId, email, pw);
+    private void createNewUser(String userId, String name, String email, String pw, String regeon, String height, String weight){
+        User user = new User(name,userId, email, pw, regeon, height, weight);
 
         databaseReference.child("users").child(userId).setValue(user);
     }
@@ -67,24 +68,24 @@ public class SignUpActivity extends AppCompatActivity {
                 final String sign_pw = et_pw.getText().toString().trim();
                 final String sign_pwr = et_pwr.getText().toString().trim();
                 final String sign_regeon = spinner.toString();
-                final int sign_height = Integer.parseInt(et_height.getText().toString());
-                final int sign_weight = Integer.parseInt(et_weight.getText().toString());
+                final String sign_height = et_height.getText().toString();
+                final String sign_weight = et_weight.getText().toString();
 
                 if(sign_pw.equals(sign_pwr)){
                     firebaseAuth.createUserWithEmailAndPassword(sign_id,sign_pw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                createNewUser(firebaseAuth.getUid(),sign_name,sign_id,sign_pw);
-                                SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
+                                createNewUser(firebaseAuth.getUid(),sign_name,sign_id,sign_pw,sign_regeon,sign_height,sign_weight);
+                                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                                 SharedPreferences.Editor editor = pref.edit();
                                 editor.putString("email", sign_id);
                                 editor.putString("pw", sign_pw);
                                 editor.putString("name", sign_name);
                                 editor.putString("regeon", sign_regeon);
                                 editor.putString("uuid", firebaseAuth.getUid());
-                                editor.putInt("height", sign_height);
-                                editor.putInt("weight", sign_weight);
+                                editor.putString("height", sign_height);
+                                editor.putString("weight", sign_weight);
 
                                 editor.putBoolean("AutoLogin", false);
                                 editor.commit();

@@ -7,13 +7,19 @@ public class User{
     public String email;
     public String pw;
     public String uuid;
+    public String regeon;
+    public String height;
+    public String weight;
 
     public User(){}
 
-    public User(String username,String uuid, String email, String pw){
+    public User(String username,String uuid, String email, String pw, String regeon, String height, String weight){
         this.username = username;
         this.uuid = uuid;
         this.email = email;
         this.pw = pw;
+        this.regeon = regeon;
+        this.height = height;
+        this.weight = weight;
     }
 }

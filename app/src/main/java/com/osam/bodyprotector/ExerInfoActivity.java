@@ -57,9 +57,10 @@ public class ExerInfoActivity extends AppCompatActivity {
         if(__id.length()<_id.length())
             id=__id;
 
-        String yURL ="https://img.youtube.com/vi/"+ id+ "/" + "default.jpg"; //유튜브 썸네일 불러오는 방법
+        String yURL ="https://img.youtube.com/vi/"+ id+ "/" + "maxresdefault.jpg"; //유튜브 썸네일 불러오는 방법
 
         Glide.with(this).load(yURL).into(VyoutubeThumbnail);
+
 
         VExerciseTitle.setText(ExerciseTitle);
         VExerciseDescription.setText(ExerciseDescription);

@@ -2,6 +2,8 @@ package com.osam.bodyprotector;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private EditText et_id;
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
 
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference().child("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +47,54 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        firebaseAuth = firebaseAuth.getInstance();
+
         et_id = (EditText)findViewById(R.id.editText_ID);
         et_pw = (EditText)findViewById(R.id.editText_pw);
         bt_ok = (Button)findViewById(R.id.bt_ok);
         bt_mkid = (Button)findViewById(R.id.bt_mkid);
         chb_memory = (CheckBox)findViewById(R.id.chb_memory);
 
-        SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
-        if(pref.getBoolean("AutoLogin", false)){
-            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-            finish();
-            startActivity(intent);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String email = pref.getString("email",null);
+        String pw = pref.getString("pw",null);
+        if(pref.getBoolean("AutoLogin", false) && email != null && pw != null){
+            firebaseAuth.signInWithEmailAndPassword(email,pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        finish();
+                        startActivity(intent);
+                        myRef.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                User value = dataSnapshot.getValue(User.class);
+                                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("email", value.email);
+                                editor.putString("pw", value.pw);
+                                editor.putString("name", value.username);
+                                editor.putString("regeon", value.regeon);
+                                editor.putString("uuid", firebaseAuth.getUid());
+                                editor.putString("height", value.height);
+                                editor.putString("weight", value.weight);
+                                editor.putBoolean("AutoLogin", true);
+                                editor.commit();
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                Log.w("HI", "값을 읽는데 실패했습니다.", error.toException());
+                            }
+                        });
+                    }
+                }
+            });
         }
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        firebaseAuth = firebaseAuth.getInstance();
         bt_ok.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -74,16 +113,17 @@ public class MainActivity extends AppCompatActivity {
                             myRef.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // This method is called once with the initial value and again
-                                    // whenever data at this location is updated.
                                     User value = dataSnapshot.getValue(User.class);
                                     if(chb_memory.isChecked()){
-                                        SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
+                                        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                                         SharedPreferences.Editor editor = pref.edit();
                                         editor.putString("email", value.email);
                                         editor.putString("pw", value.pw);
                                         editor.putString("name", value.username);
-                                        editor.putString("uuid", value.uuid);
+                                        editor.putString("regeon", value.regeon);
+                                        editor.putString("uuid", firebaseAuth.getUid());
+                                        editor.putString("height", value.height);
+                                        editor.putString("weight", value.weight);
                                         editor.putBoolean("AutoLogin", true);
                                         editor.commit();
                                     }

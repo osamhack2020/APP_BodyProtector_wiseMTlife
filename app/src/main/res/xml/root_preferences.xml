@@ -1,0 +1,63 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="사용자 정보">
+
+        <ListPreference
+            android:entries="@array/regeon"
+            android:entryValues="@array/regeon"
+            android:key="list_preference_1"
+            android:summary="군단을 선택합니다."
+            android:title="군단" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="height"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="키를 입력합니다."
+            android:title="키" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="weight"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="몸무게를 입력합니다."
+            android:title="몸무게" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="AutoLogin"
+            android:summary="저장된 이메일로 자동 로그인합니다."
+            android:title="자동 로그인" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="체력단련실 정보">
+
+        <CheckBoxPreference
+            android:addStatesFromChildren="false"
+            android:baselineAligned="false"
+            android:defaultValue="false"
+            android:key="filter"
+            android:summaryOn="가능한 운동들만 표시합니다."
+            android:title="운동 필터"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="isOutfit"
+            android:summary="체력단련실에 전문 운동기구가 있다."
+            android:title="기구"
+            app:dependency="filter" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="isBabel"
+            android:summary="체력단련실에 바벨이 있다."
+            android:title="바벨"
+            app:dependency="filter" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="isDumbel"
+            android:summary="체력단련실에 덤벨이 있다."
+            android:title="덤벨"
+            app:dependency="filter" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
