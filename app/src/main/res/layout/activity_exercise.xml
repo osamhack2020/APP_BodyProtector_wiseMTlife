@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,12 +43,9 @@
                 <github.chenupt.springindicator.viewpager.ScrollerViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="wrap_content"
-                    android:layout_height="700dp">
-
-                </github.chenupt.springindicator.viewpager.ScrollerViewPager>
+                    android:layout_height="700dp"></github.chenupt.springindicator.viewpager.ScrollerViewPager>
             </LinearLayout>
-
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </LinearLayout>
