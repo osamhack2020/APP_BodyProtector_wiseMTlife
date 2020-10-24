@@ -2,6 +2,7 @@ package com.osam.bodyprotector;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -11,16 +12,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ChestFragment extends Fragment {
 
@@ -91,7 +90,7 @@ public class ChestFragment extends Fragment {
                 holder.check_outfit = (ImageView) convertView.findViewById(R.id.check_outfit);
                 holder.ExerciseName = (TextView) convertView.findViewById(R.id.txt_exercisename);
                 holder.ExerciseDescription = (TextView) convertView.findViewById(R.id.txt_exercisedescription);
-                holder.ExerciseDifficulty = (TextView) convertView.findViewById(R.id.txt_difficulty);
+                holder.ExerciseDifficulty = (TextView) convertView.findViewById(R.id.txt_exerInfodifficulty);
 
                 convertView.setTag(holder);
             }else{
@@ -159,6 +158,7 @@ public class ChestFragment extends Fragment {
         listView.requestLayout();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -166,11 +166,11 @@ public class ChestFragment extends Fragment {
         TextView text_partname = (TextView)v.findViewById(R.id.text_partname);
 
         ExerList = (ListView)v.findViewById(R.id.FragListView);
-        ListViewAdapter adapter = new ListViewAdapter(getActivity().getBaseContext());
+        final ListViewAdapter adapter = new ListViewAdapter(getActivity().getBaseContext());
         ExerList.setAdapter(adapter);
 
 
-        ExerList.setOnTouchListener(new ListView.OnTouchListener() {
+        /*ExerList.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
@@ -190,29 +190,47 @@ public class ChestFragment extends Fragment {
                 v.onTouchEvent(event);
                 return true;
             }
-        });
+        });*/
 
-        String[] name;
-        String[] description;
-        int[] babel;
-        int[] dumbel;
-        int[] outfit;
-        int[] difficulty;
+        final String[] name;
+        final String[] description;
+        final int[] babel;
+        final int[] dumbel;
+        final int[] outfit;
+        final int[] difficulty;
         if(getArguments() != null){
             Bundle args = getArguments();
             String s = args.getString("partname");
-                name = args.getStringArray("name");
-                description = args.getStringArray("description");
-                babel = args.getIntArray("babel");
-                dumbel = args.getIntArray("dumbel");
-                outfit = args.getIntArray("outfit");
-                difficulty = args.getIntArray("difficulty");
-                for(int i = 0; i < 17; i++){
-                    adapter.addItem(name[i], description[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty[i],dumbel[i],outfit[i],babel[i],"arms");
-                }
-                adapter.notifyDataSetChanged();
+            name = args.getStringArray("name");
+            description = args.getStringArray("description");
+            babel = args.getIntArray("babel");
+            dumbel = args.getIntArray("dumbel");
+            outfit = args.getIntArray("outfit");
+            difficulty = args.getIntArray("difficulty");
+            for(int i = 0; i < 17; i++){
+                adapter.addItem(name[i], description[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty[i],dumbel[i],outfit[i],babel[i],"arms");
+            }
+            adapter.notifyDataSetChanged();
             text_partname.setText(s);
+
+            ExerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    ExerciseData data = adapter.ExerData.get(position);
+                    Intent intent = new Intent(getActivity(), ExerInfoActivity.class);
+                    intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
+                    intent.putExtra("ExerciseTitle", name[position]);
+                    intent.putExtra("ExerciseDescription", description[position]);
+                    intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                    intent.putExtra("ExerciseDifficulty", difficulty[position]);
+                    intent.putExtra("ExerciseBabel", babel[position]);
+                    intent.putExtra("ExerciseDumbel", dumbel[position]);
+                    intent.putExtra("ExerciseOutfit", outfit[position]);
+                    startActivity(intent);
+                }
+            });
         }
+
         return v;
     }
 }
