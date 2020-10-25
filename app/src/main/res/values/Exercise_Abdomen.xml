@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ExerciseName_Abdomen">
+        <item>크런치</item>
+        <item>싯-업</item>
+        <item>짐 래더 싯-업</item>
+        <item>칼브스 오버 벤치 싯-업</item>
+        <item>인클라인 벤치 싯-업</item>
+        <item>서스펜디드 벤치 싯-업</item>
+        <item>하이-풀리 크런치</item>
+        <item>머신 크런치</item>
+        <item>인클라인 레그 레이즈</item>
+        <item>레그 레이즈</item>
+        <item>행잉 레그 레이즈</item>
+        <item>트렁크 로테이션</item>
+        <item>덤벨 사이드 밴드</item>
+        <item>로망 체어 사이드 밴드</item>
+        <item>머신 트렁크 로테이션</item>
+    </string-array>
+
+    <string-array name="ExerciseDescription_Abdomen">
+        <item>복직근, 복사근</item>
+        <item>외복사근, 대퇴직근</item>
+        <item>복직근, 내복사근, 복사근</item>
+        <item>복직근, 대퇴근막장근</item>
+        <item>장요근, 대퇴근막장근</item>
+        <item>복직근, 복사근</item>
+        <item>복직근</item>
+        <item>복직근, 대퇴근막장근</item>
+        <item>하복부, 대퇴근막</item>
+        <item>장요근, 복사근, 복직근</item>
+        <item>장요근, 대퇴직근</item>
+        <item>복직근, 내복사근</item>
+        <item>복사근</item>
+        <item>요방형근, 내복사근</item>
+        <item>복사근, 내복사근</item>
+    </string-array>
+
+    <integer-array name="Exercisedumbel_Abdomen">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisebabel_Abdomen">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="Exerciseoutfit_Abdomen">
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisedifficulty_Abdomen">
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+</resources>

@@ -18,13 +18,20 @@
         android:id="@+id/post_list"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:padding="10dp" >
+        android:layout_margin="10dp"
+        android:padding="10dp">
 
     </ListView>
 
     <Button
         android:id="@+id/bt_exercise"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/bt_routine"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
 

@@ -10,4 +10,10 @@
         <item>"7군단"</item>
         <item>"8군단"</item>
     </string-array>
+
+    <string-array name="difficulty">
+        <item>난이도 하</item>
+        <item>난이도 중</item>
+        <item>난이도 상</item>
+    </string-array>
 </resources>

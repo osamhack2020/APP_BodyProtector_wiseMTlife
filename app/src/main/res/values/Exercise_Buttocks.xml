@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ExerciseName_Buttocks">
+        <item>바벨 런지</item>
+        <item>덤벨 런지</item>
+        <item>케이블 백 킥</item>
+        <item>머신 힙 익스텐션</item>
+        <item>플로어 힙 익스텐션</item>
+        <item>브릿지</item>
+        <item>케이블 힙 외전</item>
+        <item>스탠딩 머신 힙 외전</item>
+        <item>라잉 힙 외전</item>
+        <item>시티드 머신 힙 외전</item>
+    </string-array>
+
+    <string-array name="ExerciseDescription_Buttocks">
+        <item>대둔근, 대퇴사두근</item>
+        <item>대둔근, 대퇴사두근</item>
+        <item>대둔근, 대퇴이두근</item>
+        <item>대둔근, 반건양근</item>
+        <item>대둔근, 대퇴이두근, 대두근</item>
+        <item>대퇴부, 대둔근</item>
+        <item>중둔근, 소둔근</item>
+        <item>중둔근, 소둔근</item>
+        <item>중둔근, 소둔근</item>
+        <item>대둔근</item>
+    </string-array>
+
+    <integer-array name="Exercisedumbel_Buttocks">
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisebabel_Buttocks">
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="Exerciseoutfit_Buttocks">
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisedifficulty_Buttocks">
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+</resources>

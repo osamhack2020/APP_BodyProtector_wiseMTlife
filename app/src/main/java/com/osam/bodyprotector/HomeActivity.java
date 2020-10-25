@@ -190,6 +190,15 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Button bt_exercise = (Button)findViewById(R.id.bt_exercise);
+        Button bt_routine = (Button)findViewById(R.id.bt_routine);
+        bt_routine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ExerciseRoutineActivity.class);
+                startActivity(intent);
+            }
+        });
+
         bt_exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

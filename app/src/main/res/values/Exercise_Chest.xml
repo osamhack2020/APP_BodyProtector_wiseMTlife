@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ExerciseName_Chest">
+        <item>인클라인 벤치 프레스</item>
+        <item>벤치 프레스</item>
+        <item>클로즈 그립 벤치 프레스</item>
+        <item>디클라인 벤치 프레스</item>
+        <item>머신 벤치 프레스</item>
+        <item>파라렐 바 딥</item>
+        <item>푸쉬-업</item>
+        <item>덤벨 프레스</item>
+        <item>덤벨 플라이</item>
+        <item>인클라인 덤벨 프레스</item>
+        <item>인클라인 덤벨 플라이</item>
+        <item>펙 덱 플라이</item>
+        <item>케이블 크로스오버 플라이</item>
+        <item>덤벨 풀오버</item>
+        <item>바벨 풀오버</item>
+    </string-array>
+
+    <string-array name="ExerciseDescription_Chest">
+        <item>대흉근, 상완근, 상완삼두근</item>
+        <item>대흉근, 소흉근, 상완삼두근</item>
+        <item>상완삼두근, 전면삼각근</item>
+        <item>대흉근, 삼두근, 삼각근</item>
+        <item>삼두근, 삼각근, 대흉근</item>
+        <item>상완삼두근, 대흉근</item>
+        <item>대흉근, 상완삼두근</item>
+        <item>대흉근, 상완삼두근, 전면삼각근</item>
+        <item>대흉근</item>
+        <item>전면삼각근, 전거근, 소흉근</item>
+        <item>대흉근</item>
+        <item>대흉근, 오훼완근</item>
+        <item>대흉근, 소흉근</item>
+        <item>전거근, 능형근, 소흉근</item>
+        <item>대흉근, 상완삼두근 장두</item>
+    </string-array>
+
+    <integer-array name="Exercisedumbel_Chest">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisebabel_Chest">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="Exerciseoutfit_Chest">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisedifficulty_Chest">
+        <item>2</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+</resources>

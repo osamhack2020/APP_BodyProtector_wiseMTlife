@@ -23,61 +23,67 @@
     </string-array>
 
     <string-array name="ExerciseDescription_Shoulder">
-        <item>상완근, 상완이두근, 전면삼각근</item>
-        <item>상완근, 상완이두근, 상완요골근</item>
-        <item>상완이두근</item>
-        <item>상완근, 상완이두근 내측면</item>
-        <item>상완근, 상완이두근, 상완요골근, 원회내근</item>
-        <item>상완이두근</item>
-        <item>상완이두근</item>
-        <item>수근신근, 수지신근, 소지신근</item>
-        <item>장장근, 요측수근굴근, 척측수근굴근</item>
-        <item>상완근, 상완요골근, 장요측수근신근</item>
-        <item>상완삼두근, 주근</item>
-        <item>상완삼두근, 장요측수근신근, 지신근</item>
-        <item>상완삼두근의 외측두</item>
-        <item>상완삼두근 내측두, 상완삼두근 장두</item>
-        <item>상완삼두근</item>
-        <item>상완삼두근</item>
-        <item>상완삼두근, 흉근, 전면삼각근</item>
+        <item>승모근, 상완삼두근, 전거근</item>
+        <item>전면삼각근, 중각삼각근</item>
+        <item>삼각근, 승모근, 전거근</item>
+        <item>삼각근</item>
+        <item>삼각근, 승모근, 전거근</item>
+        <item>삼각근, 승모근, 능형근</item>
+        <item>중간삼각근, 극상근</item>
+        <item>전면삼각근, 대흉근</item>
+        <item>삼각근</item>
+        <item>전면삼각근, 대흉근, 중간삼각근</item>
+        <item>삼각근, 대원근, 승모근</item>
+        <item>극하근, 소원근, 후면삼각근</item>
+        <item>후면 삼각근, 승모근</item>
+        <item>중간삼각근</item>
+        <item>전면삼각근, 상완이두근</item>
+        <item>전면삼각근, 대흉근, 극하근</item>
+        <item>삼각근, 승모근, 이두근</item>
+        <item>삼각근, 극상근</item>
+        <item>후면삼각근, 극하근, 소원근</item>
     </string-array>
 
     <integer-array name="Exercisedumbel_Shoulder">
-        <item>1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
         <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
     </integer-array>
 
 
     <integer-array name="Exercisebabel_Shoulder">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
-        <item>1</item>
-        <item>1</item>
         <item>1</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -86,39 +92,43 @@
     <integer-array name="Exerciseoutfit_Shoulder">
         <item>0</item>
         <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>1</item>
         <item>1</item>
-        <item>0</item>
-        <item>1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
         <item>1</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
     </integer-array>
 
 
     <integer-array name="Exercisedifficulty_Shoulder">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
+        <item>2</item>
         <item>1</item>
         <item>0</item>
-        <item>1</item>
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
         <item>1</item>
         <item>1</item>
+        <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>1</item>

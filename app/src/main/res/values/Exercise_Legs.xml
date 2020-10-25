@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ExerciseName_Legs">
+        <item>덤벨 스쿼트</item>
+        <item>덤벨 스모 스쿼트</item>
+        <item>프론트 스쿼트</item>
+        <item>스쿼트</item>
+        <item>파워 스쿼트</item>
+        <item>인클라인 레그 프레스</item>
+        <item>핵 스쿼트</item>
+        <item>박스 스쿼트</item>
+        <item>레그 익스텐션</item>
+        <item>라잉 레그 컬</item>
+        <item>스탠딩 레그 컬</item>
+        <item>시티드 레그 컬</item>
+        <item>굿모닝</item>
+        <item>케이블 어덕션</item>
+        <item>머신 어덕션</item>
+        <item>스탠딩 카프 레이즈</item>
+        <item>머신 스탠딩 카프 레이즈</item>
+        <item>원-레그 카프 레이즈</item>
+        <item>덩키 카프 레이즈</item>
+        <item>시티드 머신 카프 레이즈</item>
+        <item>시티드 바벨 카프 레이즈</item>
+    </string-array>
+
+    <string-array name="ExerciseDescription_Legs">
+        <item>대퇴사두근, 둔근</item>
+        <item>대퇴사두근, 둔근</item>
+        <item>대퇴사두근, 둔근</item>
+        <item>대퇴사두근, 둔근, 흉극근</item>
+        <item>대퇴사두근, 둔근, 내전근</item>
+        <item>둔근, 내전근</item>
+        <item>대퇴사두근, 둔근, 내전근</item>
+        <item>대퇴근</item>
+        <item>대퇴사두근, 대퇴직근</item>
+        <item>슬와부 근육군, 비복근</item>
+        <item>대퇴부 후면, 비복근</item>
+        <item>슬와부 근육군, 비복근</item>
+        <item>대둔근, 슬와부 근육군</item>
+        <item>내전근, 대퇴부 안쪽</item>
+        <item>내전근</item>
+        <item>비복근, 가자미근</item>
+        <item>가자미근, 내외비복근</item>
+        <item>하퇴삼두근</item>
+        <item>하퇴삼두근, 비복근</item>
+        <item>가자미근, 비복근</item>
+        <item>가자미근</item>
+    </string-array>
+
+    <integer-array name="Exercisedumbel_Legs">
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisebabel_Legs">
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="Exerciseoutfit_Legs">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+    </integer-array>
+
+
+    <integer-array name="Exercisedifficulty_Legs">
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+</resources>
