@@ -1,7 +1,5 @@
 package com.osam.bodyprotector;
 
-import android.widget.Toast;
-
 public class User{
     public String username;
     public String email;

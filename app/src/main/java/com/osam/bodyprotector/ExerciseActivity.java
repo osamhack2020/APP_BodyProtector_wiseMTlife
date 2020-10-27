@@ -1,16 +1,5 @@
 package com.osam.bodyprotector;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.ListFragment;
-import androidx.preference.PreferenceManager;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +16,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.preference.PreferenceManager;
+import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -60,7 +57,7 @@ public class ExerciseActivity extends AppCompatActivity {
         }
     }
 
-    private class ListViewAdapter extends BaseAdapter {
+    private static class ListViewAdapter extends BaseAdapter {
         private Context mContext = null;
         private ArrayList<ExerciseData> ExerData = new ArrayList<ExerciseData>();
 
@@ -121,13 +118,13 @@ public class ExerciseActivity extends AppCompatActivity {
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.xml.exerciseitem, null);
 
-                holder.ExerImg = (ImageView) convertView.findViewById(R.id.img_exercise);
-                holder.check_babel = (ImageView) convertView.findViewById(R.id.check_babel);
-                holder.check_dumbel = (ImageView) convertView.findViewById(R.id.check_dumbel);
-                holder.check_outfit = (ImageView) convertView.findViewById(R.id.check_outfit);
-                holder.ExerciseName = (TextView) convertView.findViewById(R.id.txt_exercisename);
-                holder.ExerciseDescription = (TextView) convertView.findViewById(R.id.txt_exercisedescription);
-                holder.ExerciseDifficulty = (TextView) convertView.findViewById(R.id.txt_exerInfodifficulty);
+                holder.ExerImg = convertView.findViewById(R.id.img_exercise);
+                holder.check_babel = convertView.findViewById(R.id.check_babel);
+                holder.check_dumbel = convertView.findViewById(R.id.check_dumbel);
+                holder.check_outfit = convertView.findViewById(R.id.check_outfit);
+                holder.ExerciseName = convertView.findViewById(R.id.txt_exercisename);
+                holder.ExerciseDescription = convertView.findViewById(R.id.txt_exercisedescription);
+                holder.ExerciseDifficulty = convertView.findViewById(R.id.txt_exerInfodifficulty);
 
                 convertView.setTag(holder);
             }else{
@@ -177,8 +174,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     String[] partname = {"어깨","등","팔","가슴","복부","대퇴","둔부"};
 
-    private ScrollerViewPager viewpager;
-    private SpringIndicator springIndicator;
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,12 +229,11 @@ public class ExerciseActivity extends AppCompatActivity {
         final int[] outfit_shoulders = getResources().getIntArray(R.array.Exerciseoutfit_Shoulder);
         final int[] difficulty_shoulders = getResources().getIntArray(R.array.Exercisedifficulty_Shoulder);
 
-        final ScrollView scroll = (ScrollView)findViewById(R.id.scroll);
-        viewpager = (ScrollerViewPager)findViewById(R.id.viewpager);
-        springIndicator = (SpringIndicator)findViewById(R.id.indicator);
-        ViewAdapter adapter = new ViewAdapter(getSupportFragmentManager());
+        final ScrollView scroll = findViewById(R.id.scroll);
+        ScrollerViewPager viewpager = findViewById(R.id.viewpager);
+        SpringIndicator springIndicator = findViewById(R.id.indicator);
         viewpager.fixScrollSpeed();
-        Vector<View> pages = new Vector<View>();
+        Vector<View> pages = new Vector<>();
         CustomPagerAdapter Padapter = new CustomPagerAdapter(getBaseContext(),pages);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -253,44 +248,44 @@ public class ExerciseActivity extends AppCompatActivity {
             switch(s){
                 case "팔":
                     for(int i = 0; i < 17; i++){
-                        if(!isfilter || isfilter && ((isbabel && babel_arms[i] == 1) || (isdumbel && dumbel_arms[i] == 1) || (isoutfit && outfit_arms[i] == 1)))
-                            Ladapter.addItem(name_arms[i], description_arms[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_arms[i],dumbel_arms[i],outfit_arms[i],babel_arms[i],"팔");
+                        if(!isfilter || isbabel && babel_arms[i] == 1 || isdumbel && dumbel_arms[i] == 1 || isoutfit && outfit_arms[i] == 1)
+                            Ladapter.addItem(name_arms[i], description_arms[i],getResources().getDrawable(R.drawable.arms),difficulty_arms[i],dumbel_arms[i],outfit_arms[i],babel_arms[i],"팔");
                     }
                     break;
                 case "어깨":
                     for(int i = 0; i < 19; i++){
                         if(!isfilter || isfilter && ((isbabel && babel_shoulders[i] == 1) || (isdumbel && dumbel_shoulders[i] == 1) || (isoutfit && outfit_shoulders[i] == 1)))
-                            Ladapter.addItem(name_shoulders[i], description_shoulders[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_shoulders[i],dumbel_shoulders[i],outfit_shoulders[i],babel_shoulders[i],"어깨");
+                            Ladapter.addItem(name_shoulders[i], description_shoulders[i],getResources().getDrawable(R.drawable.shoulder),difficulty_shoulders[i],dumbel_shoulders[i],outfit_shoulders[i],babel_shoulders[i],"어깨");
                     }
                     break;
                 case "등":
                     for(int i = 0; i < 14; i++){
                         if(!isfilter || isfilter && ((isbabel && babel_back[i] == 1) || (isdumbel && dumbel_back[i] == 1) || (isoutfit && outfit_back[i] == 1)))
-                            Ladapter.addItem(name_back[i], description_back[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_back[i],dumbel_back[i],outfit_back[i],babel_back[i],"등");
+                            Ladapter.addItem(name_back[i], description_back[i],getResources().getDrawable(R.drawable.back),difficulty_back[i],dumbel_back[i],outfit_back[i],babel_back[i],"등");
                     }
                     break;
                 case "복부":
                     for(int i = 0; i < 13; i++){
                         if(!isfilter || isfilter && ((isbabel && babel_abdomen[i] == 1) || (isdumbel && dumbel_abdomen[i] == 1) || (isoutfit && outfit_abdomen[i] == 1)))
-                            Ladapter.addItem(name_abdomen[i], description_abdomen[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_abdomen[i],dumbel_abdomen[i],outfit_abdomen[i],babel_abdomen[i],"복부");
+                            Ladapter.addItem(name_abdomen[i], description_abdomen[i],getResources().getDrawable(R.drawable.abdomen),difficulty_abdomen[i],dumbel_abdomen[i],outfit_abdomen[i],babel_abdomen[i],"복부");
                     }
                     break;
                 case "대퇴":
                     for(int i = 0; i < 21; i++){
                         if(!isfilter || isfilter && ((isbabel && babel_legs[i] == 1) || (isdumbel && dumbel_legs[i] == 1) || (isoutfit && outfit_legs[i] == 1)))
-                            Ladapter.addItem(name_legs[i], description_legs[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_legs[i],dumbel_legs[i],outfit_legs[i],babel_legs[i],"대퇴");
+                            Ladapter.addItem(name_legs[i], description_legs[i],getResources().getDrawable(R.drawable.leg),difficulty_legs[i],dumbel_legs[i],outfit_legs[i],babel_legs[i],"대퇴");
                     }
                     break;
                 case "둔부":
                     for(int i = 0; i < 10; i++){
                         if(!isfilter || isfilter && ((isbabel && babel_buttocks[i] == 1) || (isdumbel && dumbel_buttocks[i] == 1) || (isoutfit && outfit_buttocks[i] == 1)))
-                            Ladapter.addItem(name_buttocks[i], description_buttocks[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_buttocks[i],dumbel_buttocks[i],outfit_buttocks[i],babel_buttocks[i],"둔부");
+                            Ladapter.addItem(name_buttocks[i], description_buttocks[i],getResources().getDrawable(R.drawable.buttocks),difficulty_buttocks[i],dumbel_buttocks[i],outfit_buttocks[i],babel_buttocks[i],"둔부");
                     }
                     break;
                 case "가슴":
                     for(int i = 0; i < 15; i++){
                         if(!isfilter || isfilter && ((isbabel && babel_chest[i] == 1) || (isdumbel && dumbel_chest[i] == 1) || (isoutfit && outfit_chest[i] == 1)))
-                            Ladapter.addItem(name_chest[i], description_chest[i],getResources().getDrawable(R.drawable.ic_launcher_background),difficulty_chest[i],dumbel_chest[i],outfit_chest[i],babel_chest[i],"가슴");
+                            Ladapter.addItem(name_chest[i], description_chest[i],getResources().getDrawable(R.drawable.chest),difficulty_chest[i],dumbel_chest[i],outfit_chest[i],babel_chest[i],"가슴");
                     }
                     break;
             }
@@ -398,7 +393,7 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
 
-    public class CustomPagerAdapter extends PagerAdapter {
+    public static class CustomPagerAdapter extends PagerAdapter {
 
         private Context mContext;
         private Vector<View> pages;

@@ -10,6 +10,7 @@
         android:id="@+id/img_exercise"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:scaleType = "fitCenter"
         app:srcCompat="@drawable/baseline_favorite_black_18dp" />
 
     <LinearLayout

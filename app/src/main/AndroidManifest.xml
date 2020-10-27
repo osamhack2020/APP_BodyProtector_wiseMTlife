@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExerciseRoutineActivity"></activity>
+        <activity android:name=".ExerciseRoutineSelectActivity"></activity>
+        <activity android:name=".ExerciseRoutineActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />

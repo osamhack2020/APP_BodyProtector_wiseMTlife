@@ -1,7 +1,5 @@
 package com.osam.bodyprotector;
 
-import android.net.Uri;
-
 import java.util.HashMap;
 import java.util.Map;
 

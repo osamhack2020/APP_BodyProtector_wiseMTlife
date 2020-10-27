@@ -1,9 +1,5 @@
 package com.osam.bodyprotector;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,15 +10,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText et_id;

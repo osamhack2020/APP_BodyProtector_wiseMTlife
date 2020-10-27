@@ -35,7 +35,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="운동 이름"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_exerInfodifficulty"

@@ -1,17 +1,15 @@
 package com.osam.bodyprotector;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -96,9 +93,9 @@ public class PostActivity extends AppCompatActivity {
                         });
                     } else{
                         Toast.makeText(PostActivity.this, "성공적으로 삭제하였습니다.", Toast.LENGTH_SHORT).show();
-                        databaseReference.child("post").child(post_uid).removeValue();
-                        finish();
                     }
+                    databaseReference.child("post").child(post_uid).removeValue();
+                    finish();
                 }
             });
         }

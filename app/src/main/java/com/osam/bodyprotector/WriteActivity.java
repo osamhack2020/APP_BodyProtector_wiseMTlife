@@ -1,20 +1,10 @@
 package com.osam.bodyprotector;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.CursorLoader;
-
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,6 +32,8 @@ public class WriteActivity extends AppCompatActivity {
 
     private EditText et_postname;
     private EditText et_postmain;
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     private Button bt;
     private Button bt_photo;
@@ -66,7 +62,7 @@ public class WriteActivity extends AppCompatActivity {
         bt = (Button)findViewById(R.id.bt_post);
         bt_photo = (Button)findViewById(R.id.bt_photo);
 
-        SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         if(pref.getBoolean("AutoLogin", false)){
             user.uuid = pref.getString("uuid", "null");
             user.email = pref.getString("email", "null");

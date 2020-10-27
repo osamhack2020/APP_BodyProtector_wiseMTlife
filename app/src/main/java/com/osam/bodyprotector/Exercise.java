@@ -16,4 +16,14 @@ public class Exercise {
         this.isDumbel = isDumbel;
         this.isOutfit = isOutfit;
     }
+
+
+    public boolean equals(Object o){
+        if(o instanceof Exercise){
+            Exercise toCompare = (Exercise) o;
+            return this.ExerciseName.equals(toCompare.ExerciseName);
+        }
+        return false;
+    }
+
 }

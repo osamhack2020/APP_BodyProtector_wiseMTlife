@@ -1,8 +1,5 @@
 package com.osam.bodyprotector;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -12,6 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -28,6 +28,7 @@ public class ExerInfoActivity extends AppCompatActivity {
     private TextView VExerciseInfo;
     private TextView VExerciseDiffiuclty;
     private Button bt_join;
+
 
 
     @Override
@@ -108,7 +109,7 @@ public class ExerInfoActivity extends AppCompatActivity {
         } else{
             VCheckOutfit.setImageResource(android.R.drawable.checkbox_off_background);
         }
-        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor edit = pref.edit();
         final Exercise exercise = new Exercise(ExerciseTitle,ExercisePart,ExerciseDiffiuclty,ExerciseDumbel == 1, ExerciseBabel == 1, ExerciseOutfit == 1);
         final Gson gson = new Gson();
@@ -120,7 +121,6 @@ public class ExerInfoActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 String value = pref.getString("joinlist", null);
                 ExerJoinList list;
-
                 if (value != null) {
                     list = gson.fromJson(value, ExerJoinList.class);
                     list.list.add(exercise);

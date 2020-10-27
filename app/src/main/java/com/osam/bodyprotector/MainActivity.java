@@ -1,10 +1,5 @@
 package com.osam.bodyprotector;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceManager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,8 +11,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private EditText et_id;
@@ -80,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("height", value.height);
                                 editor.putString("weight", value.weight);
                                 editor.putBoolean("AutoLogin", true);
-                                editor.commit();
+                                editor.apply();
                             }
 
                             @Override
@@ -125,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                         editor.putString("height", value.height);
                                         editor.putString("weight", value.weight);
                                         editor.putBoolean("AutoLogin", true);
-                                        editor.commit();
+                                        editor.apply();
                                     }
                                     Toast.makeText(MainActivity.this, value.email +", " + value.username, Toast.LENGTH_SHORT).show();
                                 }
