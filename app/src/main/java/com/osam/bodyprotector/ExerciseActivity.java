@@ -34,29 +34,6 @@ import github.chenupt.springindicator.viewpager.ScrollerViewPager;
 
 public class ExerciseActivity extends AppCompatActivity {
 
-    class ViewAdapter extends FragmentStatePagerAdapter {
-        private ArrayList<Fragment> fragments = new ArrayList<>();
-
-        public ViewAdapter(@NonNull FragmentManager fm) {
-            super(fm);
-        }
-
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
-
-        void addItem(Fragment fragment){
-            fragments.add(fragment);
-        }
-    }
-
     private static class ListViewAdapter extends BaseAdapter {
         private Context mContext = null;
         private ArrayList<ExerciseData> ExerData = new ArrayList<ExerciseData>();

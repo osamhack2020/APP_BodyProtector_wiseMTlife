@@ -4,42 +4,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
     tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/textView5"
+    <ScrollView
+        android:id="@+id/scrollviewHome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:text="자유게시판"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/post_list"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="10dp"
-        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </ListView>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:text="자유게시판"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <Button
-        android:id="@+id/bt_exercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+            <ListView
+                android:id="@+id/post_list"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="10dp"
+                android:padding="10dp">
 
-    <Button
-        android:id="@+id/bt_routine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+            </ListView>
 
-    <Button
-        android:id="@+id/parsing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+            <View
+                android:id="@+id/view7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <Button
+                android:id="@+id/bt_exercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#A2F4FF"
+                android:text="운동 리스트 보기" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <TextView
+                android:id="@+id/txt_date2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="XXXX.XX.XX( x요일 )"
+                android:textColor="#000000" />
+
+            <github.chenupt.springindicator.viewpager.ScrollerViewPager
+                android:id="@+id/mainroutine_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_margin="10dp"
+                android:padding="10dp">
+
+            </github.chenupt.springindicator.viewpager.ScrollerViewPager>
+
+
+            <TextView
+                android:id="@+id/txt_routineSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="end"
+                android:text="일일 달성률 0%"
+                android:textColor="#000000" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_routineEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#A2F4FF"
+                    android:text="운동 루틴 수정하기"
+                    android:textColor="#000000" />
+
+                <View
+                    android:id="@+id/view9"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000" />
+
+                <Button
+                    android:id="@+id/bt_routine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#A2F4FF"
+                    android:text="새 운동 루틴 짜기"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#000000" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

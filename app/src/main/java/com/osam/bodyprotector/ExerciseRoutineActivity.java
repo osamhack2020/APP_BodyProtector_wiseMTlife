@@ -30,7 +30,7 @@ public class ExerciseRoutineActivity extends AppCompatActivity implements Routin
             "사용자 설정 정보를 활용하여 운동을 배치합니다.",
             "운동 선택시 구독 여부를 기준으로 배치합니다.",
             "일일 운동 계획을 부위별로 고르게 배치합니다."};
-    boolean[] bool_list = new boolean[8];
+    boolean[] bool_list = new boolean[9];
     int count = 8;
 
     @Override
@@ -133,71 +133,193 @@ public class ExerciseRoutineActivity extends AppCompatActivity implements Routin
             boolean isBabel = bool_list[1];
             boolean isOutfit = bool_list[2];
             Gson gson = new Gson();
-
+            ExerciseRoutine exerciseRoutine = new ExerciseRoutine();
+            int height = Integer.parseInt(pref.getString("height",null));
+            int weight = Integer.parseInt(pref.getString("weight",null));
             ArrayList<Exercise> ExerciseList = new ArrayList<Exercise>();
+            ArrayList<ArrayList<Exercise>> PartList =new ArrayList<ArrayList<Exercise>>();
+            if(bool_list[6]){
+
+            }
             if(!bool_list[6]) {
+                ArrayList<Exercise>[] _list = new ArrayList[7];
+                for(int i = 0; i < 7; i++){
+                    _list[i] = new ArrayList<Exercise>();
+                }
                 for (int i = 0; i < 17; i++) {
                     if (!bool_list[5] || (difficulty_arms[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_arms[i], "팔", difficulty_arms[i], dumbel_arms[i] == 1, babel_arms[i] == 1, outfit_arms[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[0].add(exercise);
                     }
                 }
                 for (int i = 0; i < 19; i++) {
                     if (!bool_list[5] || (difficulty_shoulders[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_shoulders[i], "어깨", difficulty_shoulders[i], dumbel_shoulders[i] == 1, babel_shoulders[i] == 1, outfit_shoulders[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[1].add(exercise);
                     }
                 }
                 for (int i = 0; i < 14; i++) {
                     if (!bool_list[5] || (difficulty_back[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_back[i], "등", difficulty_back[i], dumbel_back[i] == 1, babel_back[i] == 1, outfit_back[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[2].add(exercise);
                     }
                 }
                 for (int i = 0; i < 13; i++) {
                     if (!bool_list[5] || (difficulty_abdomen[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_abdomen[i], "복부", difficulty_abdomen[i], dumbel_abdomen[i] == 1, babel_abdomen[i] == 1, outfit_abdomen[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[3].add(exercise);
                     }
                 }
                 for (int i = 0; i < 21; i++) {
                     if (!bool_list[5] || (difficulty_legs[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_legs[i], "대퇴", difficulty_legs[i], dumbel_legs[i] == 1, babel_legs[i] == 1, outfit_legs[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[4].add(exercise);
                     }
                 }
                 for (int i = 0; i < 10; i++) {
                     if (!bool_list[5] || (difficulty_buttocks[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_buttocks[i], "둔부", difficulty_buttocks[i], dumbel_buttocks[i] == 1, babel_buttocks[i] == 1, outfit_buttocks[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[5].add(exercise);
                     }
                 }
                 for (int i = 0; i < 15; i++) {
                     if (!bool_list[5] || (difficulty_chest[i] <= SettingDifficulty)) {
                         Exercise exercise = new Exercise(name_chest[i], "가슴", difficulty_chest[i], dumbel_chest[i] == 1, babel_chest[i] == 1, outfit_chest[i] == 1);
                         ExerciseList.add(exercise);
+                        _list[6].add(exercise);
                     }
                 }
-            }else {
-                String json = pref.getString("joinlist",null);
+                for(int i = 0; i < 7; i++){
+                    PartList.add(_list[i]);
+                }
+            }
+            else {
+                String json = pref.getString("joinlist", null);
                 ExerJoinList Elist = gson.fromJson(json, ExerJoinList.class);
-                for(Exercise E : Elist.list){
-                    if((!bool_list[5] || (E.Difficulty <= SettingDifficulty))){
+                Integer[] cnt_list = new Integer[]{0,0,0,0,0,0,0};
+                ArrayList<Exercise>[] _list = new ArrayList[7];
+                for(int i = 0; i < 7; i++){
+                    _list[i] = new ArrayList<Exercise>();
+                }
+                for (Exercise E : Elist.list) {
+                    if ((!bool_list[5] || (E.Difficulty <= SettingDifficulty))) {
                         ExerciseList.add(E);
+                        switch(E.Part){
+                            case "팔":
+                                if(cnt_list[0] <= 4){
+                                    _list[0].add(E);
+                                    cnt_list[0]++;
+                                }
+                                break;
+                            case "어깨":
+                                if(cnt_list[1] <= 4){
+                                    _list[1].add(E);
+                                    cnt_list[1]++;
+                                }
+                                break;
+                            case "등":
+                                if(cnt_list[2] <= 4){
+                                    _list[2].add(E);
+                                    cnt_list[2]++;
+                                }
+                                break;
+                            case "가슴":
+                                if(cnt_list[3] <= 4){
+                                    _list[3].add(E);
+                                    cnt_list[3]++;
+                                }
+                                break;
+                            case "복부":
+                                if(cnt_list[4] <= 4){
+                                    _list[4].add(E);
+                                    cnt_list[4]++;
+                                }
+                                break;
+                            case "대퇴":
+                                if(cnt_list[5] <= 4){
+                                    _list[5].add(E);
+                                    cnt_list[5]++;
+                                }
+                                break;
+                            case "둔부":
+                                if(!bool_list[4]) {
+                                    if (cnt_list[6] <= 4) {
+                                        _list[6].add(E);
+                                        cnt_list[6]++;
+                                    }
+                                }else{
+                                    if (cnt_list[6] <= 6) {
+                                        _list[cnt_list[6]].add(E);
+                                        cnt_list[6]++;
+                                    }
+                                }
+                                break;
+                        }
+                        for(int i = 0; i < 7; i++){
+                            exerciseRoutine.Daily.set(i,_list[i]);
+                        }
                     }
                 }
             }
-        for(Exercise E : ExerciseList) {
-            if ((!isDumbel && E.isDumbel) || (!isBabel && E.isBabel) || (!isOutfit && E.isOutfit)) {
-                ExerciseList.remove(E);
+            for(Exercise E : ExerciseList) {
+                if ((!isDumbel && E.isDumbel) || (!isBabel && E.isBabel) || (!isOutfit && E.isOutfit)) {
+                    ExerciseList.remove(E);
+                }
             }
-        }
-
+            if(!bool_list[6])
+            for(int i = 0; i < 7; i++) {
+                for (Exercise E : PartList.get(i)) {
+                    if ((!isDumbel && E.isDumbel) || (!isBabel && E.isBabel) || (!isOutfit && E.isOutfit)) {
+                        PartList.get(i).remove(E);
+                    }
+                }
+            }
+            float BMI = weight * 100 * 100 / height / height;
+            exerciseRoutine.set = 3;
+            exerciseRoutine.count = 20;
+            exerciseRoutine.weight = (int) (2*(BMI - BMI % 10));
+            if(!bool_list[6]){
+                for(int i = 0; i < PartList.get(1).size(); i += PartList.get(1).size() / 4){
+                    exerciseRoutine.Daily.get(0).add(PartList.get(1).get(i));
+                }
+                for(int i = 0; i < PartList.get(2).size(); i += PartList.get(2).size() / 4){
+                    exerciseRoutine.Daily.get(1).add(PartList.get(2).get(i));
+                }
+                for(int i = 0; i < PartList.get(3).size(); i += PartList.get(3).size() / 4){
+                    exerciseRoutine.Daily.get(2).add(PartList.get(3).get(i));
+                }
+                for(int i = 0; i < PartList.get(5).size(); i += PartList.get(5).size() / 4){
+                    exerciseRoutine.Daily.get(3).add(PartList.get(5).get(i));
+                }
+                for(int i = 0; i < PartList.get(6).size(); i += PartList.get(6).size() / 4){
+                    exerciseRoutine.Daily.get(4).add(PartList.get(6).get(i));
+                }
+                for(int i = 0; i < PartList.get(4).size(); i += PartList.get(4).size() / 4){
+                    exerciseRoutine.Daily.get(5).add(PartList.get(4).get(i));
+                }
+                if(!bool_list[4]){
+                    for(int i = 0; i < PartList.get(0).size(); i += PartList.get(0).size() / 4){
+                        exerciseRoutine.Daily.get(6).add(PartList.get(0).get(i));
+                    }
+                }else{
+                    for(int i = 0, c = 0; i < PartList.get(0).size(); i += PartList.get(0).size() / 5,c++){
+                        exerciseRoutine.Daily.get(c).add(PartList.get(0).get(i));
+                    }
+                }
+            }
             ExerJoinList FinalExerciseList = new ExerJoinList();
             FinalExerciseList.list = ExerciseList;
-            String finaljson = gson.toJson(FinalExerciseList);
+            String routinejson = gson.toJson(exerciseRoutine, ExerciseRoutine.class);
+            String finaljson = gson.toJson(FinalExerciseList, ExerJoinList.class);
             Intent intent = new Intent(this, ExerciseRoutineSelectActivity.class);
             intent.putExtra("json", finaljson);
+            intent.putExtra("routine", routinejson);
             finish();
             startActivity(intent);
         }
