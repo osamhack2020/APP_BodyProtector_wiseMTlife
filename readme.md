@@ -8,14 +8,15 @@
 ------------ | ------------- 
 ![슬라이드7](https://user-images.githubusercontent.com/48879350/97773432-ff758880-1b92-11eb-9e2c-74ef9fb42576.PNG) | ![슬라이드6](https://user-images.githubusercontent.com/48879350/97773433-ff758880-1b92-11eb-8195-fdad092f5517.PNG)
 
-생활체육참여율은 1회 30분 이상, 1주일에 2회 이상 규칙적으로 체육활동에 참여하는 사람들의 비율입니다.
-
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * 안드로이드 sdk 버전 21 이상(타겟 sdk = 30)
 
 ## 기술 스택 (Technique Used) (예시)
 ### 백 엔드(back-end)
- - Firebase Authentication, Storage, Realtime Database
+![다운로드](https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png) | ![1_HFlYgB6gVLc4Su9HsB9MZg](https://user-images.githubusercontent.com/48879350/97773548-12d52380-1b94-11eb-9208-7ecaec2d1673.png) |<img width="425" alt="firebase-storage-logo" src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png">
+
+------------ | ------------- |----------------
+Firebase Authentication| Firebase Storage| Firebase Realtime Database
  - Gson
  
 ### front-end
