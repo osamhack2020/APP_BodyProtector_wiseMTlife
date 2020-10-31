@@ -18,7 +18,7 @@
 
 <img src = "https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png" width="400px">
 -----------------------|-----------------
-<img src="https://user-images.githubusercontent.com/48879350/97773651-f8e81080-1b94-11eb-8e53-0daaa61053f2.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773683-38166180-1b95-11eb-899e-18be72c69f8b.png" width="400px">
+<img src="https://user-images.githubusercontent.com/48879350/97773683-38166180-1b95-11eb-899e-18be72c69f8b.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773651-f8e81080-1b94-11eb-8e53-0daaa61053f2.png" width="400px">
  
 ### 프론트 앤드(front-end)
 <img src = "https://user-images.githubusercontent.com/48879350/97773918-1e761980-1b97-11eb-9162-af7873176916.png" width="200px">EazeGraph|<img src="https://user-images.githubusercontent.com/48879350/97773885-e4a51300-1b96-11eb-9b6d-97399b3023be.png" width="200px">
