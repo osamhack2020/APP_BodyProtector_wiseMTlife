@@ -546,6 +546,13 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+        PostList4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollview.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -648,6 +655,51 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         PostList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PostData data = adapter.LPostData.get(position);
+                Intent intent = new Intent(HomeActivity.this, PostActivity.class);
+                intent.putExtra("postname", data.title);
+                intent.putExtra("postmain", data.main);
+                intent.putExtra("postimage", data.uri);
+                intent.putExtra("postuser", data.user.uuid);
+                intent.putExtra("imagename", data.image_name);
+                intent.putExtra("postuid", data.post_uid);
+                intent.putExtra("postingtype", data.PostingType);
+                startActivity(intent);
+            }
+        });
+        PostList2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PostData data = adapter.LPostData.get(position);
+                Intent intent = new Intent(HomeActivity.this, PostActivity.class);
+                intent.putExtra("postname", data.title);
+                intent.putExtra("postmain", data.main);
+                intent.putExtra("postimage", data.uri);
+                intent.putExtra("postuser", data.user.uuid);
+                intent.putExtra("imagename", data.image_name);
+                intent.putExtra("postuid", data.post_uid);
+                intent.putExtra("postingtype", data.PostingType);
+                startActivity(intent);
+            }
+        });
+        PostList3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PostData data = adapter.LPostData.get(position);
+                Intent intent = new Intent(HomeActivity.this, PostActivity.class);
+                intent.putExtra("postname", data.title);
+                intent.putExtra("postmain", data.main);
+                intent.putExtra("postimage", data.uri);
+                intent.putExtra("postuser", data.user.uuid);
+                intent.putExtra("imagename", data.image_name);
+                intent.putExtra("postuid", data.post_uid);
+                intent.putExtra("postingtype", data.PostingType);
+                startActivity(intent);
+            }
+        });
+        PostList4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PostData data = adapter.LPostData.get(position);
