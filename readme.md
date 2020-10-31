@@ -25,11 +25,7 @@
 <img src="https://user-images.githubusercontent.com/48879350/97773886-e53da980-1b96-11eb-8bdb-2d62421ebfa9.png" width="200px">|
 
 ## 설치 안내 (Installation Process)
-```bash
-$ git clone git주소
-$ yarn or npm install
-$ yarn start or npm run start
-```
+[어플리케이션 다운로드](BodyProtector.apk)
 
 ## 프로젝트 사용법 (Getting Started)
 **마크다운 문법을 이용하여 자유롭게 기재**
