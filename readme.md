@@ -43,6 +43,7 @@
 
 ## :computer: 컴퓨터 구성 / 필수 조건 안내 :computer:
 * 안드로이드 sdk 버전 21 이상(타겟 sdk = 30)
+* 블루투스, GPS 기능있는 휴대폰
 
 ## :hourglass: 기술 스택 :hourglass:
 ### :hammer: 백 앤드(back-end) :hammer:
@@ -56,19 +57,9 @@
 <img src="https://user-images.githubusercontent.com/48879350/97773886-e53da980-1b96-11eb-8bdb-2d62421ebfa9.png" width="200px">|
 
 ## :clipboard: 설치 안내 :clipboard:
-[어플리케이션 다운로드](https://github.com/osamhack2020/APP_BodyProtector_wiseMTlife/blob/master/BodyProtector.apk?raw=true)
+* [어플리케이션 다운로드](https://github.com/osamhack2020/APP_BodyProtector_wiseMTlife/blob/master/BodyProtector.apk?raw=true)
 
-## 프로젝트 사용법 (Getting Started)
-**마크다운 문법을 이용하여 자유롭게 기재**
-
-잘 모를 경우
-구글 검색 - 마크다운 문법
-[https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017](https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017)
-
- 편한 마크다운 에디터를 찾아서 사용
- 샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
- 
-## :construction_worker: 팀 정보 :construction_work:
+## :construction_worker: 팀 정보 :construction_worker:
 - 김유현 (youhk40@naver.com) Github ID : Frustman
 
 ## :mailbox_closed: 저작권 및 사용권 정보 :mailbox_closed:
