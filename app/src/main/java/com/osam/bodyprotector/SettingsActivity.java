@@ -1,6 +1,7 @@
 package com.osam.bodyprotector;
 
 import android.os.Bundle;
+import android.view.Window;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("설정");
         setContentView(R.layout.settings_activity);
         getSupportFragmentManager()
                 .beginTransaction()

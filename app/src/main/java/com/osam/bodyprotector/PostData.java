@@ -1,5 +1,6 @@
 package com.osam.bodyprotector;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,4 +14,5 @@ public class PostData {
     public int starCount;
     public User user;
     public Map<String, Boolean> stars = new HashMap<>();
+    public String PostingType;
 }

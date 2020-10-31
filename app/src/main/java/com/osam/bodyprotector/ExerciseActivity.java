@@ -24,8 +24,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 
 import github.chenupt.springindicator.SpringIndicator;
@@ -151,7 +153,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     String[] partname = {"어깨","등","팔","가슴","복부","대퇴","둔부"};
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint({"UseCompatLoadingForDrawables", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,6 +161,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_arms = getResources().getStringArray(R.array.ExerciseName_Arms);
         final String[] description_arms = getResources().getStringArray(R.array.ExerciseDescription_Arms);
+        final String[] detail_arms = getResources().getStringArray(R.array.ExerciseDetail_Arms);
         final int[] babel_arms = getResources().getIntArray(R.array.Exercisebabel_Arms);
         final int[] dumbel_arms = getResources().getIntArray(R.array.Exercisedumbel_Arms);
         final int[] outfit_arms = getResources().getIntArray(R.array.Exerciseoutfit_Arms);
@@ -166,6 +169,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_abdomen = getResources().getStringArray(R.array.ExerciseName_Abdomen);
         final String[] description_abdomen = getResources().getStringArray(R.array.ExerciseDescription_Abdomen);
+        final String[] detail_abdomen = getResources().getStringArray(R.array.ExerciseDetail_Abdomen);
         final int[] babel_abdomen = getResources().getIntArray(R.array.Exercisebabel_Abdomen);
         final int[] dumbel_abdomen = getResources().getIntArray(R.array.Exercisedumbel_Abdomen);
         final int[] outfit_abdomen = getResources().getIntArray(R.array.Exerciseoutfit_Abdomen);
@@ -173,6 +177,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_back = getResources().getStringArray(R.array.ExerciseName_Back);
         final String[] description_back = getResources().getStringArray(R.array.ExerciseDescription_Back);
+        final String[] detail_back = getResources().getStringArray(R.array.Exercisebabel_Back);
         final int[] babel_back = getResources().getIntArray(R.array.Exercisebabel_Back);
         final int[] dumbel_back = getResources().getIntArray(R.array.Exercisedumbel_Back);
         final int[] outfit_back = getResources().getIntArray(R.array.Exerciseoutfit_Back);
@@ -180,6 +185,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_buttocks = getResources().getStringArray(R.array.ExerciseName_Buttocks);
         final String[] description_buttocks = getResources().getStringArray(R.array.ExerciseDescription_Buttocks);
+        final String[] detail_buttocks = getResources().getStringArray(R.array.Exercisebabel_Buttocks);
         final int[] babel_buttocks = getResources().getIntArray(R.array.Exercisebabel_Buttocks);
         final int[] dumbel_buttocks = getResources().getIntArray(R.array.Exercisedumbel_Buttocks);
         final int[] outfit_buttocks = getResources().getIntArray(R.array.Exerciseoutfit_Buttocks);
@@ -187,6 +193,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_chest = getResources().getStringArray(R.array.ExerciseName_Chest);
         final String[] description_chest = getResources().getStringArray(R.array.ExerciseDescription_Chest);
+        final String[] detail_chest = getResources().getStringArray(R.array.ExerciseDetail_Chest);
         final int[] babel_chest = getResources().getIntArray(R.array.Exercisebabel_Chest);
         final int[] dumbel_chest = getResources().getIntArray(R.array.Exercisedumbel_Chest);
         final int[] outfit_chest = getResources().getIntArray(R.array.Exerciseoutfit_Chest);
@@ -194,6 +201,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_legs = getResources().getStringArray(R.array.ExerciseName_Legs);
         final String[] description_legs = getResources().getStringArray(R.array.ExerciseDescription_Legs);
+        final String[] detail_legs = getResources().getStringArray(R.array.ExerciseDetail_Legs);
         final int[] babel_legs = getResources().getIntArray(R.array.Exercisebabel_Legs);
         final int[] dumbel_legs = getResources().getIntArray(R.array.Exercisedumbel_Legs);
         final int[] outfit_legs = getResources().getIntArray(R.array.Exerciseoutfit_Legs);
@@ -201,6 +209,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         final String[] name_shoulders = getResources().getStringArray(R.array.ExerciseName_Shoulder);
         final String[] description_shoulders = getResources().getStringArray(R.array.ExerciseDescription_Shoulder);
+        final String[] detail_shoulders = getResources().getStringArray(R.array.ExerciseDetail_Shoulder);
         final int[] babel_shoulders = getResources().getIntArray(R.array.Exercisebabel_Shoulder);
         final int[] dumbel_shoulders = getResources().getIntArray(R.array.Exercisedumbel_Shoulder);
         final int[] outfit_shoulders = getResources().getIntArray(R.array.Exerciseoutfit_Shoulder);
@@ -267,7 +276,6 @@ public class ExerciseActivity extends AppCompatActivity {
                     break;
             }
             list.setAdapter(Ladapter);
-
             list.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -285,7 +293,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_arms[position]);
                             intent.putExtra("ExerciseDescription", description_arms[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_arms[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_arms[position]);
                             intent.putExtra("ExerciseBabel", babel_arms[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_arms[position]);
@@ -296,7 +304,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_shoulders[position]);
                             intent.putExtra("ExerciseDescription", description_shoulders[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_shoulders[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_shoulders[position]);
                             intent.putExtra("ExerciseBabel", babel_shoulders[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_shoulders[position]);
@@ -307,7 +315,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_back[position]);
                             intent.putExtra("ExerciseDescription", description_back[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_back[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_back[position]);
                             intent.putExtra("ExerciseBabel", babel_back[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_back[position]);
@@ -318,7 +326,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_chest[position]);
                             intent.putExtra("ExerciseDescription", description_chest[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_chest[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_chest[position]);
                             intent.putExtra("ExerciseBabel", babel_chest[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_chest[position]);
@@ -329,7 +337,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_legs[position]);
                             intent.putExtra("ExerciseDescription", description_legs[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_legs[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_legs[position]);
                             intent.putExtra("ExerciseBabel", babel_legs[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_legs[position]);
@@ -340,7 +348,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_buttocks[position]);
                             intent.putExtra("ExerciseDescription", description_buttocks[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_buttocks[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_buttocks[position]);
                             intent.putExtra("ExerciseBabel", babel_buttocks[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_buttocks[position]);
@@ -351,7 +359,7 @@ public class ExerciseActivity extends AppCompatActivity {
                             intent.putExtra("youtubeURL", "https://www.youtube.com/watch?v=3VPNc9HAdmU");
                             intent.putExtra("ExerciseTitle", name_abdomen[position]);
                             intent.putExtra("ExerciseDescription", description_abdomen[position]);
-                            intent.putExtra("ExerciseInfo", "설명을 쓰자~~");
+                            intent.putExtra("ExerciseInfo", detail_abdomen[position]);
                             intent.putExtra("ExerciseDifficulty", difficulty_abdomen[position]);
                             intent.putExtra("ExerciseBabel", babel_abdomen[position]);
                             intent.putExtra("ExerciseDumbel", dumbel_abdomen[position]);
@@ -365,6 +373,25 @@ public class ExerciseActivity extends AppCompatActivity {
             pages.add(list);
         }
         viewpager.setAdapter(Padapter);
+        final TextView txt_part = findViewById(R.id.txt_part);
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                String[] part = new String[]{"어깨 운동", "등 운동", "팔 운동", "가슴 운동", "복근 운동", "대퇴 운동", "둔부 운동"};
+                txt_part.setText(part[position]);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
 
         springIndicator.setViewPager(viewpager);
     }

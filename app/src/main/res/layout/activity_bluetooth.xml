@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonConnect"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="12dp"
+        android:gravity="center"
+        android:text="연결하기"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="511dp" />
+
+    <TextView
+        android:id="@+id/txt_BTstate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="12dp"
+        android:text="연결을 기다리고 있습니다." />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="12dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonOutput"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="리스트 보내기"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="511dp" />
+
+        <Button
+            android:id="@+id/bt_getlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:text="리스트 가져오기" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CustomDialog">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="운동 세부설정"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"/>
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:text="운동 진행사항을 저장해주세요."
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txt_percent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="현재 진행 정도 (1/3) 33%" />
+
+    <Spinner
+        android:id="@+id/spinner_percent"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="4dp"
+        android:entries="@array/routine_count" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/okButton_home"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="100"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="확인"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <Button
+            android:id="@+id/cancelButton_home"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="100"
+            android:background="#ffffff"
+            android:text="취소"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"/>
+
+</LinearLayout>

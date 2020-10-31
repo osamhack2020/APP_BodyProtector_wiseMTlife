@@ -6,7 +6,7 @@
         <ListPreference
             android:entries="@array/regeon"
             android:entryValues="@array/regeon"
-            android:key="list_preference_1"
+            android:key="regeon"
             android:summary="군단을 선택합니다."
             android:title="군단" />
         <ListPreference

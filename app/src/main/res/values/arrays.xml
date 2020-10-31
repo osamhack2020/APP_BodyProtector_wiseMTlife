@@ -102,4 +102,22 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+
+    <string-array name="Posting_type">
+        <item>자유게시판</item>
+        <item>정보게시판</item>
+        <item>자랑게시판</item>
+        <item>강의게시판</item>
+    </string-array>
+
+    <string-array name="PercentPart">
+        <item>전체</item>
+        <item>팔</item>
+        <item>등</item>
+        <item>어깨</item>
+        <item>가슴</item>
+        <item>대퇴</item>
+        <item>둔부</item>
+        <item>복부</item>
+    </string-array>
 </resources>

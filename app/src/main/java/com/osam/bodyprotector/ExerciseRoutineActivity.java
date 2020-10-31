@@ -134,13 +134,25 @@ public class ExerciseRoutineActivity extends AppCompatActivity implements Routin
             boolean isOutfit = bool_list[2];
             Gson gson = new Gson();
             ExerciseRoutine exerciseRoutine = new ExerciseRoutine();
-            int height = Integer.parseInt(pref.getString("height",null));
-            int weight = Integer.parseInt(pref.getString("weight",null));
+            String height_buf = pref.getString("height",null);;
+            String weight_buf = pref.getString("weight",null);
+            if(height_buf != null && weight_buf != null){
+                int height = Integer.parseInt(height_buf);
+                int weight = Integer.parseInt(weight_buf);
+                float BMI = weight * 100 * 100 / height / height;
+                exerciseRoutine.set = 3;
+                exerciseRoutine.count = 20;
+                exerciseRoutine.weight = (int) (2*(BMI - BMI % 5));
+            } else {
+                Toast.makeText(this, "설정한 키, 몸무게 값이 없어", Toast.LENGTH_SHORT).show();
+                exerciseRoutine.set = 3;
+                exerciseRoutine.count = 20;
+                exerciseRoutine.weight = 30;
+            }
+
+
             ArrayList<Exercise> ExerciseList = new ArrayList<Exercise>();
             ArrayList<ArrayList<Exercise>> PartList =new ArrayList<ArrayList<Exercise>>();
-            if(bool_list[6]){
-
-            }
             if(!bool_list[6]) {
                 ArrayList<Exercise>[] _list = new ArrayList[7];
                 for(int i = 0; i < 7; i++){
@@ -201,68 +213,70 @@ public class ExerciseRoutineActivity extends AppCompatActivity implements Routin
             }
             else {
                 String json = pref.getString("joinlist", null);
-                ExerJoinList Elist = gson.fromJson(json, ExerJoinList.class);
-                Integer[] cnt_list = new Integer[]{0,0,0,0,0,0,0};
-                ArrayList<Exercise>[] _list = new ArrayList[7];
-                for(int i = 0; i < 7; i++){
-                    _list[i] = new ArrayList<Exercise>();
-                }
-                for (Exercise E : Elist.list) {
-                    if ((!bool_list[5] || (E.Difficulty <= SettingDifficulty))) {
-                        ExerciseList.add(E);
-                        switch(E.Part){
-                            case "팔":
-                                if(cnt_list[0] <= 4){
-                                    _list[0].add(E);
-                                    cnt_list[0]++;
-                                }
-                                break;
-                            case "어깨":
-                                if(cnt_list[1] <= 4){
-                                    _list[1].add(E);
-                                    cnt_list[1]++;
-                                }
-                                break;
-                            case "등":
-                                if(cnt_list[2] <= 4){
-                                    _list[2].add(E);
-                                    cnt_list[2]++;
-                                }
-                                break;
-                            case "가슴":
-                                if(cnt_list[3] <= 4){
-                                    _list[3].add(E);
-                                    cnt_list[3]++;
-                                }
-                                break;
-                            case "복부":
-                                if(cnt_list[4] <= 4){
-                                    _list[4].add(E);
-                                    cnt_list[4]++;
-                                }
-                                break;
-                            case "대퇴":
-                                if(cnt_list[5] <= 4){
-                                    _list[5].add(E);
-                                    cnt_list[5]++;
-                                }
-                                break;
-                            case "둔부":
-                                if(!bool_list[4]) {
-                                    if (cnt_list[6] <= 4) {
-                                        _list[6].add(E);
-                                        cnt_list[6]++;
+                if(json != null){
+                    ExerJoinList Elist = gson.fromJson(json, ExerJoinList.class);
+                    Integer[] cnt_list = new Integer[]{0,0,0,0,0,0,0};
+                    ArrayList<Exercise>[] _list = new ArrayList[7];
+                    for(int i = 0; i < 7; i++){
+                        _list[i] = new ArrayList<Exercise>();
+                    }
+                    for (Exercise E : Elist.list) {
+                        if ((!bool_list[5] || (E.Difficulty <= SettingDifficulty))) {
+                            ExerciseList.add(E);
+                            switch (E.Part) {
+                                case "팔":
+                                    if (cnt_list[0] <= 4) {
+                                        _list[0].add(E);
+                                        cnt_list[0]++;
                                     }
-                                }else{
-                                    if (cnt_list[6] <= 6) {
-                                        _list[cnt_list[6]].add(E);
-                                        cnt_list[6]++;
+                                    break;
+                                case "어깨":
+                                    if (cnt_list[1] <= 4) {
+                                        _list[1].add(E);
+                                        cnt_list[1]++;
                                     }
-                                }
-                                break;
-                        }
-                        for(int i = 0; i < 7; i++){
-                            exerciseRoutine.Daily.set(i,_list[i]);
+                                    break;
+                                case "등":
+                                    if (cnt_list[2] <= 4) {
+                                        _list[2].add(E);
+                                        cnt_list[2]++;
+                                    }
+                                    break;
+                                case "가슴":
+                                    if (cnt_list[3] <= 4) {
+                                        _list[3].add(E);
+                                        cnt_list[3]++;
+                                    }
+                                    break;
+                                case "복부":
+                                    if (cnt_list[4] <= 4) {
+                                        _list[4].add(E);
+                                        cnt_list[4]++;
+                                    }
+                                    break;
+                                case "대퇴":
+                                    if (cnt_list[5] <= 4) {
+                                        _list[5].add(E);
+                                        cnt_list[5]++;
+                                    }
+                                    break;
+                                case "둔부":
+                                    if (!bool_list[4]) {
+                                        if (cnt_list[6] <= 4) {
+                                            _list[6].add(E);
+                                            cnt_list[6]++;
+                                        }
+                                    } else {
+                                        if (cnt_list[6] <= 6) {
+                                            _list[cnt_list[6]].add(E);
+                                            cnt_list[6]++;
+                                        }
+                                    }
+                                    break;
+                            }
+                            for (int i = 0; i < 7; i++) {
+                                exerciseRoutine.Daily.set(i, _list[i]);
+                            }
                         }
                     }
                 }
@@ -280,10 +294,6 @@ public class ExerciseRoutineActivity extends AppCompatActivity implements Routin
                     }
                 }
             }
-            float BMI = weight * 100 * 100 / height / height;
-            exerciseRoutine.set = 3;
-            exerciseRoutine.count = 20;
-            exerciseRoutine.weight = (int) (2*(BMI - BMI % 10));
             if(!bool_list[6]){
                 for(int i = 0; i < PartList.get(1).size(); i += PartList.get(1).size() / 4){
                     exerciseRoutine.Daily.get(0).add(PartList.get(1).get(i));

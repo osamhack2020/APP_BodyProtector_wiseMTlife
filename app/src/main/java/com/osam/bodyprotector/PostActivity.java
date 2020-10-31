@@ -28,6 +28,8 @@ public class PostActivity extends AppCompatActivity {
 
     private TextView text_postname;
     private TextView text_postmain;
+    private TextView text_postingtype;
+
     private ImageView imgView;
     private Button bt_delete;
     private Button bt_update;
@@ -42,6 +44,7 @@ public class PostActivity extends AppCompatActivity {
 
         text_postmain = (TextView)findViewById(R.id.text_postmain);
         text_postname = (TextView)findViewById(R.id.text_postname);
+        text_postingtype = (TextView)findViewById(R.id.txt_postingtype);
         imgView = (ImageView)findViewById(R.id.image_thumbnail);
 
         Intent intent = getIntent();
@@ -52,8 +55,9 @@ public class PostActivity extends AppCompatActivity {
         final String uid = intent.getExtras().getString("postuser");
         final String image_name = intent.getExtras().getString("imagename");
         final String post_uid = intent.getExtras().getString("postuid");
+        final String Postingtype = intent.getExtras().getString("postingtype");
 
-
+        text_postingtype.setText(Postingtype);
         if(!uid.equals(firebaseAuth.getUid())){
             bt_update.setVisibility(View.INVISIBLE);
         }else{
@@ -117,7 +121,5 @@ public class PostActivity extends AppCompatActivity {
             Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
-
     }
-
 }

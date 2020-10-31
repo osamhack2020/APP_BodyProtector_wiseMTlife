@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("uuid", firebaseAuth.getUid());
                                 editor.putString("height", value.height);
                                 editor.putString("weight", value.weight);
-                                editor.putBoolean("AutoLogin", true);
+                                if(chb_memory.isChecked()){
+                                    editor.putBoolean("AutoLogin", true);
+                                }
                                 editor.apply();
                             }
 
@@ -105,24 +107,27 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            DatabaseReference myRef = database.getReference().child("users").child(firebaseAuth.getUid());
-                            myRef.addValueEventListener(new ValueEventListener() {
+                            myRef.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     User value = dataSnapshot.getValue(User.class);
-                                    if(chb_memory.isChecked()){
-                                        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-                                        SharedPreferences.Editor editor = pref.edit();
-                                        editor.putString("email", value.email);
-                                        editor.putString("pw", value.pw);
-                                        editor.putString("name", value.username);
-                                        editor.putString("regeon", value.regeon);
-                                        editor.putString("uuid", firebaseAuth.getUid());
-                                        editor.putString("height", value.height);
-                                        editor.putString("weight", value.weight);
-                                        editor.putBoolean("AutoLogin", true);
-                                        editor.apply();
+                                    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                                    SharedPreferences.Editor editor = pref.edit();
+                                    String df = pref.getString("difficulty", null);
+                                    if(df == null){
+                                        editor.putString("difficulty", "난이도 상");
                                     }
+                                    editor.putString("email", value.email);
+                                    editor.putString("pw", value.pw);
+                                    editor.putString("name", value.username);
+                                    editor.putString("regeon", value.regeon);
+                                    editor.putString("uuid", firebaseAuth.getUid());
+                                    editor.putString("height", value.height);
+                                    editor.putString("weight", value.weight);
+                                    if(chb_memory.isChecked()){
+                                        editor.putBoolean("AutoLogin", true);
+                                    }
+                                    editor.apply();
                                     Toast.makeText(MainActivity.this, value.email +", " + value.username, Toast.LENGTH_SHORT).show();
                                 }
 

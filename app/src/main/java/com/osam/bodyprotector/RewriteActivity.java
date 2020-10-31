@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class RewriteActivity extends AppCompatActivity {
 
     private EditText et_repostname;
     private EditText et_repostmain;
+    private Spinner spinner;
 
     private Button bt;
     private Button updatepost;
@@ -42,8 +44,8 @@ public class RewriteActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    private void UpdatePost(User user, String postname, String postmain, String image_path, String image_name, String postuid){
-        Post post = new Post(user, postname, postmain, image_path, postuid, image_name);
+    private void UpdatePost(User user, String postname, String postmain, String image_path, String image_name, String postuid, String PostingType){
+        Post post = new Post(user, postname, postmain, image_path, postuid, image_name, PostingType);
 
         databaseReference.child("post").child(postuid).setValue(post);
     }
@@ -114,10 +116,11 @@ public class RewriteActivity extends AppCompatActivity {
                                     public void onSuccess(Uri uri) {
                                         String post_main = et_repostmain.getText().toString().trim();
                                         String post_name = et_repostname.getText().toString().trim();
+                                        String PostingType = spinner.getSelectedItem().toString();
 
                                         if(postimg != null) storage.getReference().child("profileImages/").child(image_name).delete();
 
-                                        UpdatePost(user,post_name, post_main, uri.toString(), fileName, postuid);
+                                        UpdatePost(user,post_name, post_main, uri.toString(), fileName, postuid, PostingType);
                                         Intent intent = new Intent();
                                         intent.putExtra("title",post_name);
                                         intent.putExtra("main",post_main);
@@ -130,7 +133,8 @@ public class RewriteActivity extends AppCompatActivity {
                             }
                         });
                     } else{
-                        UpdatePost(user,post_name, post_main, postimg, image_name, postuid);
+                        String PostingType = spinner.getSelectedItem().toString();
+                        UpdatePost(user,post_name, post_main, postimg, image_name, postuid, PostingType);
                         Intent intent = new Intent();
                         intent.putExtra("title",post_name);
                         intent.putExtra("main",post_main);

@@ -1,6 +1,9 @@
 package com.osam.bodyprotector;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,17 +15,21 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
@@ -39,6 +46,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -49,8 +57,28 @@ public class HomeActivity extends AppCompatActivity {
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference().child("post");
+    private DatabaseReference databaseReference = database.getReference();
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+    public static Activity activity;
+
+    private void savePercent(Date date, RoutineAdapter adapter){
+        PercentData data = new PercentData(date);
+        int sum = 0;
+        int cnt = 0;
+        for(MainRoutineData D : adapter.RoutineData){
+            data.percent.put(D.exercise.ExerciseName, D.percent);
+            data.list.add(D.exercise.ExerciseName);
+            data.part.put(D.exercise.ExerciseName, D.exercise.Part);
+            cnt++;
+            sum += D.percent;
+        }
+        data.percentSum = sum / cnt;
+        String Date = Integer.toString(date.getYear())+ Integer.toString(date.getMonth()) + Integer.toString(date.getDate());
+        databaseReference.child("Percent").child(firebaseAuth.getUid()).child(Date).setValue(data);
+    }
+
 
     private class ViewHolder {
         public ImageView png;
@@ -102,7 +130,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
-        public void addItem(String uri, String title, String main, String uid, int starCount, HashMap<String, Boolean> stars, User user, String image_name, String post_uid){
+        public void addItem(String uri, String title, String main, String uid, int starCount, HashMap<String, Boolean> stars, User user, String image_name, String post_uid, String Postingtype){
             PostData addInfo = null;
             addInfo = new PostData();
             addInfo.uri = uri;
@@ -114,6 +142,7 @@ public class HomeActivity extends AppCompatActivity {
             addInfo.user = user;
             addInfo.image_name = image_name;
             addInfo.post_uid = post_uid;
+            addInfo.PostingType = Postingtype;
 
             LPostData.add(addInfo);
         }
@@ -304,111 +333,140 @@ public class HomeActivity extends AppCompatActivity {
 
     private ScrollerViewPager viewpager;
     private ListView PostList;
+    private ListView PostList2;
+    private ListView PostList3;
+    private ListView PostList4;
+    private ListView PostList5;
     private TextView txt_date;
     private TextView txt_percent;
     private ScrollView scrollview;
     private Button bt_routineEdit;
 
-    String[] date_array = {"월요일","화요일","수요일","목요일","금요일","토요일","일요일"};
+    int cur_pagenum = 0;
+    boolean has_adapter = false;
 
+    String[] date_array = {"일요일","월요일","화요일","수요일","목요일","금요일","토요일"};
+
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        activity = HomeActivity.this;
+
         final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = pref.edit();
         final Gson gson = new Gson();
 
         scrollview = (ScrollView)findViewById(R.id.scrollviewHome);
+        txt_date = findViewById(R.id.txt_date2);
 
         viewpager = (ScrollerViewPager)findViewById(R.id.mainroutine_viewpager);
-        ExerciseRoutine routine = gson.fromJson(pref.getString("ExerciseRoutine", null), ExerciseRoutine.class);
         Vector<View> pages = new Vector<View>();
-
         ExerciseRoutineSelectActivity.CustomPagerAdapter pagerAdapter = new ExerciseRoutineSelectActivity.CustomPagerAdapter(getBaseContext(), pages);
 
-        Calendar cal = Calendar.getInstance();
+        String json = pref.getString("ExerciseRoutine", null);
+        final Calendar cal = Calendar.getInstance();
         final int year = cal.get(Calendar.YEAR);
         final int month = cal.get(Calendar.MONTH) + 1;
         final int date = cal.get(Calendar.DATE);
         final int dateofweek = (cal.get(Calendar.DAY_OF_WEEK) - 1) % 7;
+        if(json != null){
+            MainRoutine routine = gson.fromJson(json, MainRoutine.class);
+            if(pref.getString("ExerciseRoutine", null) != null) {
+                for (int i = 0; i < 7; i++) {
+                    ListView list = new ListView(getBaseContext());
+                    final RoutineAdapter adapter = new RoutineAdapter(getBaseContext());
+                    list.setAdapter(adapter);
+                    for (MainRoutineData E : routine.Daily[(i + dateofweek - 1) % 7]) {
+                        adapter.addItem(E.exercise, E.countperset, E.set, E.weight, E.percent);
+                    }
+                    adapter.notifyDataSetChanged();
+                    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            if (cur_pagenum == 0) {
+                                CustomDialog dl = new CustomDialog(HomeActivity.this);
+                                dl.callFunction(adapter.RoutineData.get(position).set, adapter, position, cur_pagenum, txt_percent);
+                            } else {
+                                Toast.makeText(HomeActivity.this, "운동은 당일에만 진행할 수 있습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
 
-        for(int i = 0; i < 7; i++){
-            ListView list = new ListView(getBaseContext());
-            RoutineAdapter adapter = new RoutineAdapter(getBaseContext());
-            list.setAdapter(adapter);
-            for(Exercise E : routine.Daily.get((i + dateofweek) % 7)){
-                if(E.ExerciseName.equals("휴식")){
-                    adapter.addItem(E, routine.count, routine.set, routine.weight, 100);
-                } else{
-                    adapter.addItem(E, routine.count, routine.set, routine.weight, 0);
+                    list.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            scrollview.requestDisallowInterceptTouchEvent(true);
+                            return false;
+                        }
+                    });
+                    adapters[i] = adapter;
+                    pages.add(list);
                 }
+                has_adapter = true;
             }
-            adapter.notifyDataSetChanged();
-            final int finalI = i;
-            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            viewpager.setAdapter(pagerAdapter);
+            txt_date.setText(year + "." + month + "." + date + "( " +date_array[dateofweek] + " )");
+            txt_percent = findViewById(R.id.txt_routineSum);
+            int sum = 0;
+            int cnt = 0;
+            for(MainRoutineData data2 : adapters[0].RoutineData){
+                sum += data2.percent;
+                cnt++;
+            }
+            int percent2 = 0;
+            if(sum != 0) percent2 = sum / cnt;
+            txt_percent.setText("일일 달성률 " + percent2 + "%");
+            viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    cur_pagenum = position;
+                    int sum = 0;
+                    int cnt = 0;
+                    for(MainRoutineData data : adapters[position].RoutineData){
+                        sum += data.percent;
+                        cnt++;
+                    }
+                    int percent = 0;
+                    if(sum != 0) percent = sum / cnt;
+                    txt_percent.setText("일일 달성률 " + percent + "%");
+                    Calendar cal = Calendar.getInstance();
+                    cal.add(Calendar.DATE, position);
+                    int _year = cal.get(Calendar.YEAR);
+                    int _month = cal.get(Calendar.MONTH) + 1;
+                    int _date = cal.get(Calendar.DATE);
+                    int _dateofweek = (cal.get(Calendar.DAY_OF_WEEK) - 1) % 7;
+                    txt_date.setText(_year + "." + _month + "." + _date + "( " +date_array[_dateofweek] + " )");
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
                 }
             });
-
-            list.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    scrollview.requestDisallowInterceptTouchEvent(true);
-                    return false;
-                }
-            });
-            adapters[i] = adapter;
-            pages.add(list);
         }
-        viewpager.setAdapter(pagerAdapter);
-        txt_date = findViewById(R.id.txt_date2);
-        txt_date.setText(year + "." + month + "." + date + "( " +date_array[dateofweek] + " )");
-        txt_percent = findViewById(R.id.txt_routineSum);
-        int sum = 0;
-        int cnt = 0;
-        for(MainRoutineData data : adapters[dateofweek].RoutineData){
-            sum += data.percent;
-            cnt++;
+        else{
+            txt_date.setText("아직 운동 루틴이 없습니다. 새로 생성해주십시오.");
         }
-        int percent = 0;
-        if(sum != 0) percent = sum / cnt;
-        txt_percent.setText("일일 달성률 " + percent + "%");
-        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                int sum = 0;
-                int cnt = 0;
-                for(MainRoutineData data : adapters[position].RoutineData){
-                    sum += data.percent;
-                    cnt++;
-                }
-                int percent = 0;
-                if(sum != 0) percent = sum / cnt;
-                txt_percent.setText("일일 달성률 " + percent + "%");
-                Calendar cal = Calendar.getInstance();
-                cal.add(Calendar.DATE, position);
-                int _year = cal.get(Calendar.YEAR);
-                int _month = cal.get(Calendar.MONTH) + 1;
-                int _date = cal.get(Calendar.DATE);
-                int _dateofweek = (cal.get(Calendar.DAY_OF_WEEK) - 1) % 7;
-                txt_date.setText(_year + "." + _month + "." + _date + "( " +date_array[_dateofweek] + " )");
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
         bt_routineEdit = findViewById(R.id.bt_routineEdit);
+
+        Button bt_Bluetooth = findViewById(R.id.bt_bluetooth);
+        bt_Bluetooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, BluetoothActivity.class);
+                startActivity(intent);
+            }
+        });
 
         bt_routineEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -422,7 +480,7 @@ public class HomeActivity extends AppCompatActivity {
                     int i = dateofweek;
                     for(RoutineAdapter adapter : adapters){
                         for(MainRoutineData data : adapter.RoutineData){
-                            routine.Daily.get(i % 7).add(data.exercise);
+                            routine.Daily.get((i - 1) % 7).add(data.exercise);
                         }
                         i++;
                     }
@@ -452,10 +510,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         PostList = (ListView)findViewById(R.id.post_list);
+        PostList2 = (ListView)findViewById(R.id.post_list2);
+        PostList3 = (ListView)findViewById(R.id.post_list3);
+        PostList4 = (ListView)findViewById(R.id.post_list4);
+        PostList5 = (ListView)findViewById(R.id.post_list5);
         final ListViewAdapter adapter = new ListViewAdapter(this);
+        final ListViewAdapter adapter2 = new ListViewAdapter(this);
+        final ListViewAdapter adapter3 = new ListViewAdapter(this);
+        final ListViewAdapter adapter4 = new ListViewAdapter(this);
+        final ListViewAdapter adapter5 = new ListViewAdapter(this);
         PostList.setAdapter(adapter);
-        adapter.addItem(null,"new post","",null,0, new HashMap<String, Boolean>(), new User(), null, null);
-
+        PostList2.setAdapter(adapter2);
+        PostList3.setAdapter(adapter3);
+        PostList4.setAdapter(adapter4);
+        PostList5.setAdapter(adapter5);
 
         PostList.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -464,17 +532,46 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        PostList2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollview.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        PostList3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollview.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter.LPostData.clear();
-                adapter.addItem(null,"new post","",null,0, new HashMap<String, Boolean>(),new User(), null, null);
+                adapter2.LPostData.clear();
+                adapter3.LPostData.clear();
+                adapter4.LPostData.clear();
                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
                     Post post = fileSnapshot.getValue(Post.class);
-                    adapter.addItem(post.image_path,post.postname,post.postmain,post.postuid,post.starCount, (HashMap<String, Boolean>) post.stars,post.user, post.image_name, post.postuid);
+                    if(post.PostingType.equals("자유게시판")){
+                        adapter.addItem(post.image_path,post.postname,post.postmain,post.postuid,post.starCount, (HashMap<String, Boolean>) post.stars,post.user, post.image_name, post.postuid,post.PostingType);
+                    }
+                    if(post.PostingType.equals("정보게시판")){
+                        adapter2.addItem(post.image_path,post.postname,post.postmain,post.postuid,post.starCount, (HashMap<String, Boolean>) post.stars,post.user, post.image_name, post.postuid,post.PostingType);
+                    }
+                    if(post.PostingType.equals("자랑게시판")){
+                        adapter3.addItem(post.image_path,post.postname,post.postmain,post.postuid,post.starCount, (HashMap<String, Boolean>) post.stars,post.user, post.image_name, post.postuid,post.PostingType);
+                    }
+                    if(post.PostingType.equals("강의게시판")){
+                        adapter4.addItem(post.image_path,post.postname,post.postmain,post.postuid,post.starCount, (HashMap<String, Boolean>) post.stars,post.user, post.image_name, post.postuid,post.PostingType);
+                    }
                 }
                 adapter.notifyDataSetChanged();
+                adapter2.notifyDataSetChanged();
+                adapter3.notifyDataSetChanged();
+                adapter4.notifyDataSetChanged();
             }
 
             @Override
@@ -483,37 +580,89 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        myRef.orderByChild("starcount").limitToLast(10).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                adapter5.LPostData.clear();
+                for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
+                    Post post = fileSnapshot.getValue(Post.class);
+                    adapter5.addItem(post.image_path,post.postname,post.postmain,post.postuid,post.starCount, (HashMap<String, Boolean>) post.stars,post.user, post.image_name, post.postuid,post.PostingType);
+                }
+                adapter5.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("HI", "값을 읽는데 실패했습니다.", error.toException());
+            }
+        });
+
+        Button bt_chart = findViewById(R.id.bt_chart);
+        bt_chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ChartActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView img_plus = findViewById(R.id.img_plus);
+        img_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, WriteActivity.class);
+                startActivity(intent);
+            }
+        });
+        ImageView img_plus2 = findViewById(R.id.img_plus2);
+        img_plus2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, WriteActivity.class);
+                startActivity(intent);
+            }
+        });
+        ImageView img_plus3 = findViewById(R.id.img_plus3);
+        img_plus3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, WriteActivity.class);
+                startActivity(intent);
+            }
+        });
+        ImageView img_plus4 = findViewById(R.id.img_plus4);
+        img_plus3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, WriteActivity.class);
+                startActivity(intent);
+            }
+        });
+        ImageView img_plus5 = findViewById(R.id.img_plus5);
+        img_plus3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, WriteActivity.class);
+                startActivity(intent);
+            }
+        });
 
         PostList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0){
-                    Intent intent = new Intent(HomeActivity.this, WriteActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    PostData data = adapter.LPostData.get(position);
-                    Intent intent = new Intent(HomeActivity.this, PostActivity.class);
-                    intent.putExtra("postname", data.title);
-                    intent.putExtra("postmain", data.main);
-                    intent.putExtra("postimage", data.uri);
-                    intent.putExtra("postuser", data.user.uuid);
-                    intent.putExtra("imagename", data.image_name);
-                    intent.putExtra("postuid", data.post_uid);
-                    startActivity(intent);
-                }
+                PostData data = adapter.LPostData.get(position);
+                Intent intent = new Intent(HomeActivity.this, PostActivity.class);
+                intent.putExtra("postname", data.title);
+                intent.putExtra("postmain", data.main);
+                intent.putExtra("postimage", data.uri);
+                intent.putExtra("postuser", data.user.uuid);
+                intent.putExtra("imagename", data.image_name);
+                intent.putExtra("postuid", data.post_uid);
+                intent.putExtra("postingtype", data.PostingType);
+                startActivity(intent);
             }
         });
     }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        for(RoutineAdapter adapter : adapters){
-            adapter.notifyDataSetChanged();
-        }
-
-    }
-
     @SuppressLint("ResourceType")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -529,5 +678,109 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    private class CustomDialog {
+
+        private Context context;
+
+        public CustomDialog(Context context) {
+            this.context = context;
+        }
+
+        public void callFunction(final int set, final RoutineAdapter adapter, final int position, final int cur_num, final TextView txt_p) {
+            final Dialog dlg = new Dialog(context);
+
+            dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dlg.setContentView(R.layout.custom_dialog_home);
+            dlg.show();
+
+            final Spinner spinner_percent = dlg.findViewById(R.id.spinner_percent);
+            final Button okButton = dlg.findViewById(R.id.okButton_home);
+            final Button cancelButton = dlg.findViewById(R.id.cancelButton_home);
+            final TextView txt_percent = dlg.findViewById(R.id.txt_percent);
+            Integer[] items = new Integer[set + 1];
+            for(int i = 0; i <= set; i++){
+                items[i] = i;
+            }
+            ArrayAdapter<Integer> date_adapter = new ArrayAdapter<Integer>(HomeActivity.this, android.R.layout.simple_spinner_item, items);
+            spinner_percent.setAdapter(date_adapter);
+            spinner_percent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    final int count = Integer.parseInt(spinner_percent.getSelectedItem().toString());
+                    int percent = 0;
+                    if(count != 0) percent = count * 100 / set;
+                    txt_percent.setText("현재 진행 정도 (" + count + "/"+ set + ") " + percent + "%");
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            okButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final int percent = Integer.parseInt(spinner_percent.getSelectedItem().toString());
+                    Calendar cal = Calendar.getInstance();
+                    final int dateofweek = cal.get(Calendar.DAY_OF_WEEK);
+
+                    MainRoutineData data = adapter.RoutineData.get(position);
+                    data.percent = percent * 100 / set;
+
+                    adapter.RoutineData.set(position, data);
+                    Toast.makeText(context, "성공적으로 수정했습니다.", Toast.LENGTH_SHORT).show();
+                    adapter.notifyDataSetChanged();
+                    for(RoutineAdapter adapter : adapters) {
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    MainRoutine routine = new MainRoutine();
+                    int i = 0;
+                    for(RoutineAdapter adapter : adapters){
+                        for(MainRoutineData _data : adapter.RoutineData){
+                            MainRoutineData Routinedata = new MainRoutineData(_data.exercise, _data.countperset, _data.set, _data.weight, _data.percent);
+                            routine.Daily[(i + dateofweek - 2) % 7].add(Routinedata);
+                        }
+                        i++;
+                    }
+                    Gson gson = new Gson();
+                    String json = gson.toJson(routine);
+                    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(HomeActivity.this);
+                    SharedPreferences.Editor editor = pref.edit();
+                    savePercent(new Date(System.currentTimeMillis()),adapter);
+
+                    editor.putString("ExerciseRoutine", json);
+                    editor.apply();
+                    int sum = 0;
+                    int cnt = 0;
+                    for(MainRoutineData data2 : adapters[cur_num].RoutineData){
+                        sum += data2.percent;
+                        cnt++;
+                    }
+                    Log.d("sum", String.valueOf(cur_pagenum));
+                    int percent2 = 0;
+                    if(sum != 0) percent2 = sum / cnt;
+                    txt_p.setText("일일 달성률 " + percent2 + "%");
+
+                    dlg.dismiss();
+                }
+            });
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "취소했습니다.", Toast.LENGTH_SHORT).show();
+                    dlg.dismiss();
+                }
+            });
+        }
     }
 }

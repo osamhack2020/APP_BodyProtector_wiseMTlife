@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final String sign_id = et_id.getText().toString().trim();
                 final String sign_pw = et_pw.getText().toString().trim();
                 final String sign_pwr = et_pwr.getText().toString().trim();
-                final String sign_regeon = spinner.toString();
+                final String sign_regeon = spinner.getSelectedItem().toString();
                 final String sign_height = et_height.getText().toString();
                 final String sign_weight = et_weight.getText().toString();
 

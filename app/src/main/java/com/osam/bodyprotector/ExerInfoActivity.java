@@ -77,6 +77,29 @@ public class ExerInfoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        switch(ExercisePart){
+            case "팔":
+                VExerciseImg.setImageResource(R.drawable.arms);
+                break;
+            case "등":
+                VExerciseImg.setImageResource(R.drawable.back);
+                break;
+            case "어깨":
+                VExerciseImg.setImageResource(R.drawable.shoulder);
+                break;
+            case "복부":
+                VExerciseImg.setImageResource(R.drawable.abdomen);
+                break;
+            case "대퇴":
+                VExerciseImg.setImageResource(R.drawable.leg);
+                break;
+            case "둔부":
+                VExerciseImg.setImageResource(R.drawable.buttocks);
+                break;
+            case "가슴":
+                VExerciseImg.setImageResource(R.drawable.chest);
+                break;
+        }
 
         VExerciseTitle.setText(ExerciseTitle);
         VExerciseDescription.setText(ExerciseDescription);

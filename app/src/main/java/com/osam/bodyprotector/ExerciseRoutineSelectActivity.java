@@ -225,11 +225,12 @@ public class ExerciseRoutineSelectActivity extends AppCompatActivity {
         btOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExerciseRoutine routine = new ExerciseRoutine();
+                MainRoutine routine = new MainRoutine();
                 int i = 0;
                 for(ListViewAdapter adapter : adapters){
                     for(RoutineData data : adapter.RoutineData){
-                        routine.Daily.get(i).add(data.exercise);
+                        MainRoutineData Routinedata = new MainRoutineData(data.exercise, data.countperset, data.set, data.weight, (data.exercise.ExerciseName.equals("휴식")) ? 100 : 0);
+                        routine.Daily[i].add(Routinedata);
                     }
                     i++;
                 }
@@ -245,7 +246,11 @@ public class ExerciseRoutineSelectActivity extends AppCompatActivity {
                 editor.putString("ExerciseRoutine", json);
                 editor.putString("ExerciseList", listjson);
                 editor.apply();
+                HomeActivity activity = (HomeActivity)HomeActivity.activity;
+                activity.finish();
                 finish();
+                Intent intent2 = new Intent(ExerciseRoutineSelectActivity.this, HomeActivity.class);
+                startActivity(intent2);
                 Toast.makeText(ExerciseRoutineSelectActivity.this, "성공적으로 루틴을 저장했습니다.", Toast.LENGTH_SHORT).show();
             }
         });

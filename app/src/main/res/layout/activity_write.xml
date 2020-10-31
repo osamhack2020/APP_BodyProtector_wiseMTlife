@@ -36,10 +36,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|end"
-                    android:background="@drawable/et_back"
+                    android:background="@color/design_default_color_background"
                     android:ems="12"
                     android:gravity="center"
-                    android:hint="Type the title"
+                    android:hint="제목을 입력하세요"
                     android:inputType="textPersonName"
                     android:padding="8dp"
                     android:textCursorDrawable="@drawable/et_cursor"
@@ -48,24 +48,58 @@
 
             </LinearLayout>
 
+            <View
+                android:id="@+id/view10"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
             <EditText
                 android:id="@+id/et_postmain"
                 android:layout_width="match_parent"
                 android:layout_height="460dp"
                 android:layout_margin="12dp"
-                android:background="@drawable/et_back"
+                android:background="@color/design_default_color_background"
                 android:ems="10"
                 android:gravity="start|top"
+                android:hint="본문을 입력하세요"
                 android:inputType="textMultiLine"
                 android:padding="12dp"
                 android:singleLine="false" />
 
+            <View
+                android:id="@+id/view11"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="게시판"
+                android:textColor="#000000" />
+
+            <Spinner
+                android:id="@+id/spinner_posting"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:entries="@array/Posting_type" />
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
             <Button
-                android:id="@+id/bt_post"
+                android:id="@+id/bt_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="post" />
+                android:background="#FFFFFF"
+                android:text="사진 가져오기" />
 
             <ImageView
                 android:id="@+id/image_post"
@@ -74,11 +108,12 @@
                 app:srcCompat="@android:drawable/screen_background_light" />
 
             <Button
-                android:id="@+id/bt_photo"
+                android:id="@+id/bt_post"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="photo" />
+                android:background="#FFFFFF"
+                android:text="게시하기" />
 
         </LinearLayout>
     </ScrollView>
