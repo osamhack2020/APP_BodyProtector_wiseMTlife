@@ -1,6 +1,6 @@
 ![logo](https://user-images.githubusercontent.com/48879350/97773302-d4d70000-1b91-11eb-8def-55158dc5ecf4.png)
 
-# 팀소개 및 프로잭트 설명 동영상
+# :popcorn: 프로젝트 시연 동영상 :popcorn:
 [![Watch the video](https://img.youtube.com/vi/T2B65j1kBLU/0.jpg)](https://youtu.be/T2B65j1kBLU)
 
 # :snowflake: 프로젝트 설명 :snowflake:
