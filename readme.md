@@ -26,6 +26,21 @@
 ------------ | ------------- 
  ![슬라이드6](https://user-images.githubusercontent.com/48879350/97773433-ff758880-1b92-11eb-8195-fdad092f5517.PNG)|![슬라이드7](https://user-images.githubusercontent.com/48879350/97773432-ff758880-1b92-11eb-9e2c-74ef9fb42576.PNG) 
 
+## :bell: 주요 기능 :bell:
+![1](https://user-images.githubusercontent.com/48879350/97777694-483e3900-1bb5-11eb-9086-f6eeda4c8ff2.gif)|![2](https://user-images.githubusercontent.com/48879350/97777695-4aa09300-1bb5-11eb-97be-cd2b020933ca.gif)|![3](https://user-images.githubusercontent.com/48879350/97777706-568c5500-1bb5-11eb-9780-a752e99655e7.gif)
+---------------|----------------|----------------
+회원가입 및 로그인 | 운동 리스트 열람 |사용자 정보 감응형 운동 루틴 형성
+
+
+![4](https://user-images.githubusercontent.com/48879350/97777709-59874580-1bb5-11eb-8815-57add4fc5065.gif)|![6](https://user-images.githubusercontent.com/48879350/97777713-62781700-1bb5-11eb-9149-89fbf8e52925.gif)|![5](https://user-images.githubusercontent.com/48879350/97777711-5e4bf980-1bb5-11eb-8673-0249d23cde29.gif)
+----------------|------------------|-------------------
+운동 리스트 수정 | 일일 운동량 반영|게시판에 포스트 게시
+
+![7](https://user-images.githubusercontent.com/48879350/97777718-65730780-1bb5-11eb-94e5-9f6404af49f2.gif)|![8](https://user-images.githubusercontent.com/48879350/97777720-699f2500-1bb5-11eb-8ef0-fdd3f56bc1b1.gif)|![9](https://user-images.githubusercontent.com/48879350/97777723-6c017f00-1bb5-11eb-9770-a9246fbf5ef8.gif)
+---------------------|------------------------|--------------------------
+운동 기록 열람 및 통계 차트 제공 | 사용자 설정 | 스마트 밴드와 연결 및 정보 동기화
+
+
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * 안드로이드 sdk 버전 21 이상(타겟 sdk = 30)
 
