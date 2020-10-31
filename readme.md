@@ -1,9 +1,14 @@
 ![logo](https://user-images.githubusercontent.com/48879350/97773302-d4d70000-1b91-11eb-8def-55158dc5ecf4.png)
 
-## 팀소개 및 프로잭트 설명 동영상
+# 팀소개 및 프로잭트 설명 동영상
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
-## 프로젝트 개요
+# 프로젝트 개요
+생활체육참여율 | 
+------------ | 
+![그림1](https://user-images.githubusercontent.com/48879350/97773367-72caca80-1b92-11eb-9224-cf9a7190a29c.png)|  
+
+생활체육참여율은 1회 30분 이상, 1주일에 2회 이상 규칙적으로 체육활동에 참여하는 사람들의 비율입니다.
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * 안드로이드 sdk 버전 21 이상(타겟 sdk = 30)
