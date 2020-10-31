@@ -13,9 +13,8 @@
 
 ## 기술 스택 (Technique Used) (예시)
 ### 백 엔드(back-end)
-![다운로드](https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png) | ![1_HFlYgB6gVLc4Su9HsB9MZg](https://user-images.githubusercontent.com/48879350/97773548-12d52380-1b94-11eb-9208-7ecaec2d1673.png) |<img width="425" alt="firebase-storage-logo" src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png">
-
------------- | ------------- |----------------
+hello                  |hi               | wow
+-----------------------|-----------------|---------------------------
 Firebase Authentication| Firebase Storage| Firebase Realtime Database
  - Gson
  
