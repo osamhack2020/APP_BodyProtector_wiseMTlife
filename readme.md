@@ -3,7 +3,14 @@
 # 팀소개 및 프로잭트 설명 동영상
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
-# 프로젝트 개요
+# 프로젝트 설명
+## :running: 프로젝트 개요 :running:
+
+ '내몸지킴이'는 운동을 처음 접하는 군 장병들에게 자동으로 운동 루틴을 짜주는 어플입니다. 각 부대 마다 다른 운동 환경을 고려하고
+ 사용자 정보에 감응하여 새로운 운동 루틴을 제공합니다. 사용자는 제공된 운동 루틴을 따를 수 있고, 원하는 대로 운동 루틴을 짤 수도
+ 있습니다. '스마트밴드'는 사용자의 무리한 운동을 막고 일일 운동 플랜을 관리해주는 웨어러블 디바이스입니다. 휴대폰을 제출한 후에도
+ '스마트밴드'를 활용하여 운동 일정을 관리하고, 무리한 운동시에는 '스마트밴드'가 반응하여 신호음을 냅니다.
+
 ## 문제 인식
 [![슬라이드4](https://user-images.githubusercontent.com/48879350/97773429-fa183e00-1b92-11eb-92b9-61fe8fd47064.PNG)](http://www.index.go.kr/unify/idx-info.do?idxCd=4252) | ![슬라이드5](https://user-images.githubusercontent.com/48879350/97773430-fc7a9800-1b92-11eb-8769-56352f85e0ee.PNG)
 ------------ | ------------- 
