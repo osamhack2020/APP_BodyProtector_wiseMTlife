@@ -1,5 +1,4 @@
-
-![logo](https://user-images.githubusercontent.com/48879350/97773122-7d846000-1b90-11eb-839d-98de497e877c.png)
+![logo](https://user-images.githubusercontent.com/48879350/97773302-d4d70000-1b91-11eb-8def-55158dc5ecf4.png)
 
 ## 팀소개 및 프로잭트 설명 동영상
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
