@@ -63,6 +63,11 @@
 
 ![개발일정](https://user-images.githubusercontent.com/48879350/97779231-14b4dc00-1bc0-11eb-9503-4a1748a0308b.PNG)
 
+## :office: 프로젝트 관리 :office:
+[![프로젝트](https://user-images.githubusercontent.com/48879350/97779624-9148ba00-1bc2-11eb-8229-f088c8105243.PNG)](https://github.com/osamhack2020/APP_BodyProtector_wiseMTlife/projects/1)
+
+[프로젝트 관리 바로가기](https://github.com/osamhack2020/APP_BodyProtector_wiseMTlife/projects/1)
+
 ## :construction_worker: 팀 정보 :construction_worker:
 - 김유현 (youhk40@naver.com) Github ID : Frustman
 
