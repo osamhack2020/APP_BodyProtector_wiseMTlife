@@ -4,7 +4,7 @@
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
 # 프로젝트 개요
-![슬라이드4](https://user-images.githubusercontent.com/48879350/97773429-fa183e00-1b92-11eb-92b9-61fe8fd47064.PNG) | ![슬라이드5](https://user-images.githubusercontent.com/48879350/97773430-fc7a9800-1b92-11eb-8769-56352f85e0ee.PNG)
+[![슬라이드4](https://user-images.githubusercontent.com/48879350/97773429-fa183e00-1b92-11eb-92b9-61fe8fd47064.PNG)](http://www.index.go.kr/unify/idx-info.do?idxCd=4252) | ![슬라이드5](https://user-images.githubusercontent.com/48879350/97773430-fc7a9800-1b92-11eb-8769-56352f85e0ee.PNG)
 ------------ | ------------- 
 ![슬라이드7](https://user-images.githubusercontent.com/48879350/97773432-ff758880-1b92-11eb-9e2c-74ef9fb42576.PNG) | ![슬라이드6](https://user-images.githubusercontent.com/48879350/97773433-ff758880-1b92-11eb-8195-fdad092f5517.PNG)
 
