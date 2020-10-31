@@ -1,7 +1,7 @@
 ![logo](https://user-images.githubusercontent.com/48879350/97773302-d4d70000-1b91-11eb-8def-55158dc5ecf4.png)
 
 # :popcorn: 프로젝트 시연 동영상 :popcorn:
-[![Watch the video](https://img.youtube.com/vi/s9VtqlAQScg/0.jpg)](https://youtu.be/s9VtqlAQScg)
+[![Watch the video](https://img.youtube.com/vi/PWeS_T3aqbc/0.jpg)](https://youtu.be/PWeS_T3aqbc)
 
 # :snowflake: 프로젝트 설명 :snowflake:
 ## :running: 프로젝트 개요 :running:
