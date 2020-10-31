@@ -13,9 +13,11 @@
 
 ## 기술 스택 (Technique Used) (예시)
 ### 백 앤드(back-end)
-![다운로드](https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png)|<img width="425" alt="firebase-storage-logo" src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png">
+
+
+<img src = "https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png" width="400px">
 -----------------------|-----------------
-![11](https://user-images.githubusercontent.com/48879350/97773651-f8e81080-1b94-11eb-8e53-0daaa61053f2.png)|![gson](https://user-images.githubusercontent.com/48879350/97773683-38166180-1b95-11eb-899e-18be72c69f8b.png)
+<img src="https://user-images.githubusercontent.com/48879350/97773651-f8e81080-1b94-11eb-8e53-0daaa61053f2.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773683-38166180-1b95-11eb-899e-18be72c69f8b.png" width="400px">
  
 ### 프론트 앤드(front-end)
  -  Glide Library
