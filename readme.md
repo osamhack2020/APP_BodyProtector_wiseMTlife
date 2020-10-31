@@ -20,9 +20,9 @@
 <img src="https://user-images.githubusercontent.com/48879350/97773651-f8e81080-1b94-11eb-8e53-0daaa61053f2.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773683-38166180-1b95-11eb-899e-18be72c69f8b.png" width="400px">
  
 ### 프론트 앤드(front-end)
-<img src = "https://user-images.githubusercontent.com/48879350/97773884-e40c7c80-1b96-11eb-891d-acd33a1dfaad.jpg" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773885-e4a51300-1b96-11eb-9b6d-97399b3023be.png" width="400px">
+<img src = "https://user-images.githubusercontent.com/48879350/97773918-1e761980-1b97-11eb-9162-af7873176916.png" width="200px">|<img src="https://user-images.githubusercontent.com/48879350/97773885-e4a51300-1b96-11eb-9b6d-97399b3023be.png" width="200px">
 -----------------------|-----------------
-<img src="https://user-images.githubusercontent.com/48879350/97773886-e53da980-1b96-11eb-8bdb-2d62421ebfa9.png" width="400px">|
+<img src="https://user-images.githubusercontent.com/48879350/97773886-e53da980-1b96-11eb-8bdb-2d62421ebfa9.png" width="200px">|
 
 ## 설치 안내 (Installation Process)
 ```bash
