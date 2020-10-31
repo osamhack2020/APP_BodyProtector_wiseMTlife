@@ -4,9 +4,9 @@
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
 # 프로젝트 개요
-생활체육참여율 | 
------------- | 
-![그림1](https://user-images.githubusercontent.com/48879350/97773367-72caca80-1b92-11eb-9224-cf9a7190a29c.png)|  
+![슬라이드4](https://user-images.githubusercontent.com/48879350/97773429-fa183e00-1b92-11eb-92b9-61fe8fd47064.PNG) | ![슬라이드5](https://user-images.githubusercontent.com/48879350/97773430-fc7a9800-1b92-11eb-8769-56352f85e0ee.PNG)
+------------ | ------------- 
+![슬라이드7](https://user-images.githubusercontent.com/48879350/97773432-ff758880-1b92-11eb-9e2c-74ef9fb42576.PNG) | ![슬라이드6](https://user-images.githubusercontent.com/48879350/97773433-ff758880-1b92-11eb-8195-fdad092f5517.PNG)
 
 생활체육참여율은 1회 30분 이상, 1주일에 2회 이상 규칙적으로 체육활동에 참여하는 사람들의 비율입니다.
 
