@@ -59,6 +59,10 @@
 ## :clipboard: 설치 안내 :clipboard:
 * [어플리케이션 다운로드](https://github.com/osamhack2020/APP_BodyProtector_wiseMTlife/blob/master/BodyProtector.apk?raw=true)
 
+## :blue_book: 개발 일정 :blue_book:
+
+![개발일정](https://user-images.githubusercontent.com/48879350/97779231-14b4dc00-1bc0-11eb-9503-4a1748a0308b.PNG)
+
 ## :construction_worker: 팀 정보 :construction_worker:
 - 김유현 (youhk40@naver.com) Github ID : Frustman
 
