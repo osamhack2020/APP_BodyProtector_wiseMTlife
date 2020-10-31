@@ -1,7 +1,4 @@
-# Smaple Logo
-![Logo](https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png)
 
-팀명 텍스트 및 팀명 로고 이미지 **(택1)**
 ![logo](https://user-images.githubusercontent.com/48879350/97773122-7d846000-1b90-11eb-839d-98de497e877c.png)
 
 ## 팀소개 및 프로잭트 설명 동영상
