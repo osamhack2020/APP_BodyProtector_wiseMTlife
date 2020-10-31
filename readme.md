@@ -41,21 +41,21 @@
 운동 기록 열람 및 통계 차트 제공 | 사용자 설정 | 스마트 밴드와 연결 및 정보 동기화
 
 
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+## :computer: 컴퓨터 구성 / 필수 조건 안내 :computer:
 * 안드로이드 sdk 버전 21 이상(타겟 sdk = 30)
 
-## 기술 스택 (Technique Used) (예시)
-### 백 앤드(back-end)
+## :hourglass: 기술 스택 :hourglass:
+### :hammer: 백 앤드(back-end) :hammer:
 <img src = "https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png" width="400px">
 -----------------------|-----------------
 <img src="https://user-images.githubusercontent.com/48879350/97773651-f8e81080-1b94-11eb-8e53-0daaa61053f2.png" width="400px">|<img src="https://user-images.githubusercontent.com/48879350/97773683-38166180-1b95-11eb-899e-18be72c69f8b.png" width="400px">
  
-### 프론트 앤드(front-end)
+### :wrench: 프론트 앤드(front-end) :wrench:
 <img src = "https://user-images.githubusercontent.com/48879350/97773918-1e761980-1b97-11eb-9162-af7873176916.png" width="200px">EazeGraph|<img src="https://user-images.githubusercontent.com/48879350/97773885-e4a51300-1b96-11eb-9b6d-97399b3023be.png" width="200px">
 -----------------------|-----------------
 <img src="https://user-images.githubusercontent.com/48879350/97773886-e53da980-1b96-11eb-8bdb-2d62421ebfa9.png" width="200px">|
 
-## 설치 안내 (Installation Process)
+## :clipboard: 설치 안내 :clipboard:
 [어플리케이션 다운로드](https://github.com/osamhack2020/APP_BodyProtector_wiseMTlife/blob/master/BodyProtector.apk?raw=true)
 
 ## 프로젝트 사용법 (Getting Started)
@@ -68,8 +68,8 @@
  편한 마크다운 에디터를 찾아서 사용
  샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
  
-## 팀 정보 (Team Information)
+## :construction_worker: 팀 정보 :construction_work:
 - 김유현 (youhk40@naver.com) Github ID : Frustman
 
-## 저작권 및 사용권 정보 (Copyleft / End User License)
+## :mailbox_closed: 저작권 및 사용권 정보 :mailbox_closed:
  * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
