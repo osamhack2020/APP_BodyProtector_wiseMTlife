@@ -594,7 +594,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        myRef.orderByChild("starcount").limitToLast(10).addValueEventListener(new ValueEventListener() {
+        myRef.orderByChild("starcount").limitToFirst(10).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter5.LPostData.clear();
