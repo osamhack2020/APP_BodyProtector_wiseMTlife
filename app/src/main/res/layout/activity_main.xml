@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="ID :"
+            android:text="아이디 :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="PW :"
+            android:text="비밀번호 :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -62,35 +62,67 @@
             android:inputType="textPassword" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/view24"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
 
+        <View
+            android:id="@+id/view27"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
         <Button
             android:id="@+id/bt_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FFFFFF"
             android:gravity="center_vertical"
-            android:text="Sign in" />
+            android:text="로그인" />
+
+        <View
+            android:id="@+id/view25"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
 
         <Button
             android:id="@+id/bt_mkid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FFFFFF"
             android:gravity="center_vertical"
-            android:text="sign up" />
+            android:text="회원가입" />
+
+        <View
+            android:id="@+id/view31"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/view26"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
 
     <CheckBox
         android:id="@+id/chb_memory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="Auto Login" />
+        android:text="자동 로그인" />
 
 </LinearLayout>

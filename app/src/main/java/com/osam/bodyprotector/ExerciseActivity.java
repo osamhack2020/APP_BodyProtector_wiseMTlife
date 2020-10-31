@@ -374,6 +374,7 @@ public class ExerciseActivity extends AppCompatActivity {
         }
         viewpager.setAdapter(Padapter);
         final TextView txt_part = findViewById(R.id.txt_part);
+        txt_part.setText("어깨 운동");
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

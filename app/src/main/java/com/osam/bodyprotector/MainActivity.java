@@ -128,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
                                         editor.putBoolean("AutoLogin", true);
                                     }
                                     editor.apply();
-                                    Toast.makeText(MainActivity.this, value.email +", " + value.username, Toast.LENGTH_SHORT).show();
                                 }
 
                                 @Override
