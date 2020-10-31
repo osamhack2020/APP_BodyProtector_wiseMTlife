@@ -12,7 +12,7 @@
 * 안드로이드 sdk 버전 21 이상(타겟 sdk = 30)
 
 ## 기술 스택 (Technique Used) (예시)
-![다운로드](https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png)|<img width="425" alt="firebase-storage-logo" src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png">|![1_HFlYgB6gVLc4Su9HsB9MZg](https://user-images.githubusercontent.com/48879350/97773548-12d52380-1b94-11eb-9208-7ecaec2d1673.png)
+![다운로드](https://user-images.githubusercontent.com/48879350/97773547-123c8d00-1b94-11eb-9438-44714f623384.png)|<img width="425" alt="firebase-storage-logo" src="https://user-images.githubusercontent.com/48879350/97773550-136dba00-1b94-11eb-9579-0591741f2373.png">|![0_DXLWivmxRs6aDQRw](https://user-images.githubusercontent.com/48879350/97773634-d950e800-1b94-11eb-88ef-22a43844652a.png)
 -----------------------|-----------------|---------------------------
 Firebase Authentication| Firebase Storage| Firebase Realtime Database
  - Gson
